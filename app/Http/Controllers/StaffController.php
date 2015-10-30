@@ -69,6 +69,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -80,7 +81,10 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = array_except(Input::all());
+        $staff->update( $input );
+
+        return Redirect::route('staff.show', $staff->Id)->with('message', 'Staff updated');
     }
 
     /**
