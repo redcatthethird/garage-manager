@@ -7,6 +7,8 @@ use App\Staff;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use Redirect;
 
 class StaffController extends Controller
 {
@@ -42,7 +44,10 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Input::all();
+        Staff::create( $input );
+
+        return Redirect::route('staff.index')->with('message', 'Staff created');
     }
 
     /**
@@ -62,9 +67,8 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Staff $staff)
     {
-        //
     }
 
     /**

@@ -11,7 +11,7 @@
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
-		<td><a href="{{ URL::route('showClient', array($clients[$i]['ClientID'])) }}">{{ $clients[$i]['ClientID'] }}</a></td>
+		<td><a href="{{ URL::route('showClient', array($clients[$i]['Id'])) }}">{{ $clients[$i]['Id'] }}</a></td>
 		<td>{{$clients[$i]['Name']}}</td>
 		<td>{{$clients[$i]['Address']}}</td>
 		<td>{{$clients[$i]['PhoneNo']}}</td>

@@ -5,12 +5,18 @@
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>E-mail address</th>
 	</tr>
 
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
-		<td>{{$staff[$i]['Id']}}</td>
+		<td><a href="{{ URL::route('staff.show', array($staff[$i]['Id'])) }}">{{ $staff[$i]['Id'] }}</a></td>
 		<td>{{$staff[$i]['Name']}}</td>
+		<td>{{$staff[$i]['Address']}}</td>
+		<td>{{$staff[$i]['PhoneNo']}}</td>
+		<td>{{$staff[$i]['Email']}}</td>
 	</tr>
 	@endfor
 </table>
