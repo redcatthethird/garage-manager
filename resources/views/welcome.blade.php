@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Alpha-Omega</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -32,13 +32,23 @@
 
             .title {
                 font-size: 96px;
+                font-style: bold;
+            }
+            .subtitle{
+            	font-size: 46px
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Alpha-Omega</div>
+                <div class="subtitle">Software Engeneering with Group Project</div>
+                <div><ul>
+ 						 <li><a href="staff">Staff</a></li>
+ 						 <li><a href="cars">Cars</a></li>
+ 						 <li><a href="customer">Customers</a></li>
+					 </ul></div>
             </div>
         </div>
     </body>
