@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/greeting', 'Greeting@greet');
 
-Route::model('staff', 'Staff');
+Route::model('staff', 'App\Staff');
 Route::resource('staff', 'StaffController');
 /*
 Route::get('/staff', 'StaffController@index');
