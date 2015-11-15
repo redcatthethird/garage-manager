@@ -1,6 +1,9 @@
 @include ('head', ['title' => 'List of staff members'])
 <h1>List of staff members</h1>
 </br>
+<a href="{{ URL::route('staff.create') }}">Create</a>
+</br>
+</br>
 <table border='1'>
 	<tr>
 		<th>ID</th>
@@ -20,7 +23,10 @@
 		<td>{{$staff[$i]['PhoneNo']}}</td>
 		<td>{{$staff[$i]['Email']}}</td>
 		<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}">Edit</a></td>
-		<td><a href="{{ URL::route('staff.destroy', array($staff[$i]['Id'])) }}">Delete</a></td>
+		<td>{!! Form::open(['route' => ['staff.destroy', $staff[$i]['Id']], 'method' => 'DELETE']) !!}
+		{!! Form::submit('Delete') !!}
+		<!--a href="{{ URL::route('staff.destroy', array($staff[$i]['Id'])) }}">Delete</a-->
+		{!! Form::close() !!}</td>
 	</tr>
 	@endfor
 </table>
