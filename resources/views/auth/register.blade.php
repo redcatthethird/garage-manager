@@ -27,6 +27,6 @@
     </div>
 
     <div>
-        <button type="submit">Register</button>
+		<a href="{{ URL::route('logoutRoute') }}">Register</a>
     </div>
 </form>

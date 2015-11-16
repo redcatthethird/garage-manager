@@ -15,8 +15,10 @@ Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logoutRoute']);
 
+
+
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
+Route::get('register', ['uses' => 'Auth\AuthController@getRegister', 'as' => 'registerRoute']);
 Route::post('register', 'Auth\AuthController@postRegister');
 
 Route::get('/greeting', 'Greeting@greet');

@@ -108,5 +108,6 @@ th, td {
 <header>
 <p>You are logged in as {{ Auth::user()['name'] }}</p>
 <br/>
+	<a href="{{ URL::route('registerRoute') }}">Register new user</a>
 	<a href="{{ URL::route('logoutRoute') }}">Logout</a>
 </header>
