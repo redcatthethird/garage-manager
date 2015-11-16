@@ -4,8 +4,8 @@
 <a href="{{ URL::route('staff.create') }}">Create</a>
 </br>
 </br>
-<table border='1'>
-	<tr>
+<table border='1' class="table a">
+	<tr class="table th">
 		<th>ID</th>
 		<th>Name</th>
 		<th>Address</th>
