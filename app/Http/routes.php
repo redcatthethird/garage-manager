@@ -23,6 +23,8 @@ Route::get('/greeting', 'Greeting@greet');
 
 Route::model('staff', 'App\Staff');
 Route::model('clients', 'App\Client');
+Route::model('cars', 'App\Car');
+Route::model('repairs', 'App\Repair');
 
 Route::group(array('middleware' => 'auth'), function()
 {

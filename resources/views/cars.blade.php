@@ -9,8 +9,8 @@
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
-		<td><a href="{{ URL::route('showCar', array($cars[$i]['LicencePlate'])) }}">{{ $cars[$i]['LicencePlate'] }}</a></td>
-		<td><a href="{{ URL::route('showClient', array($cars[$i]['StaffID'])) }}">{{ $cars[$i]['ClientID'] }}</a></td>
+		<td><a href="{{ URL::route('cars.show', array($cars[$i]['LicencePlate'])) }}">{{ $cars[$i]['LicencePlate'] }}</a></td>
+		<td><a href="{{ URL::route('clients.show', array($cars[$i]['ClientId'])) }}">{{ $cars[$i]['ClientId'] }}</a></td>
 		<td>{{$cars[$i]['Model']}}</td>
 	</tr>
 	@endfor

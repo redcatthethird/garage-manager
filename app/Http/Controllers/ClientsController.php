@@ -55,9 +55,9 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        //
+        //var_dump($client->cars()->first());
     }
 
     /**
