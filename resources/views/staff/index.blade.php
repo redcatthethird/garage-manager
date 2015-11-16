@@ -3,7 +3,6 @@
 </br>
 <a href="{{ URL::route('staff.create') }}">Create</a>
 </br>
-</br>
 <table border='1' class="table a">
 	<tr class="table th">
 		<th>ID</th>
@@ -23,11 +22,10 @@
 		<td>{{$staff[$i]['PhoneNo']}}</td>
 		<td>{{$staff[$i]['Email']}}</td>
 
-
 		<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}">Edit</a></td>
 
 		<td>{!! Form::open(['route' => ['staff.destroy', $staff[$i]['Id']], 'method' => 'DELETE']) !!}
-		{!! Form::submit('Delete') !!}
+			{!! Form::submit('Delete') !!}
 		<!--a href="{{ URL::route('staff.destroy', array($staff[$i]['Id'])) }}">Delete</a-->
 		{!! Form::close() !!}</td>
 	</tr>

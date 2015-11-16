@@ -15,14 +15,14 @@ class CreateCarsTable extends Migration
         Schema::create('Cars', function (Blueprint $table) {
             $table->string('LicencePlate', 10);
             $table->primary('LicencePlate');
-            $table->integer('ClientID')->unsigned();
+            $table->integer('ClientId')->unsigned();
             $table->string('Model');
             $table->timestamps();
             $table->softDeletes();
         });
 
         Schema::table('Cars', function (Blueprint $table) {
-            $table->foreign('ClientID')->references('Id')->on('Clients');
+            $table->foreign('ClientId')->references('Id')->on('Clients');
         });
     }
 

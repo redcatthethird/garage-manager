@@ -7,6 +7,8 @@ use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use Redirect;
 
 class ClientsController extends Controller
 {
@@ -29,7 +31,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create', [] );
     }
 
     /**
@@ -40,7 +42,10 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Input::all();
+        Client::create( $input );
+
+        return Redirect::route('clients.index')->with('message', 'Client created');
     }
 
     /**

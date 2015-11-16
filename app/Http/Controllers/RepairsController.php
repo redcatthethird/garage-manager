@@ -18,14 +18,9 @@ class RepairsController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user()) {
+	    $repairs = Repair::all();
 
-    	    $repairs = Repair::all();
-
-            return view('repairs', ['repairs' => $repairs, 'count' => Repair::count()] );
-		}
-
-		else return redirect('login');
+        return view('repairs', ['repairs' => $repairs, 'count' => Repair::count()] );
     }
 
     /**
