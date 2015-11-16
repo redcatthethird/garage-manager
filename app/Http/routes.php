@@ -21,6 +21,8 @@ Route::post('register', 'Auth\AuthController@postRegister');
 
 Route::get('/greeting', 'Greeting@greet');
 
+Route::model('staff', 'App\Staff');
+Route::model('clients', 'App\Client');
 
 Route::group(array('middleware' => 'auth'), function()
 {
@@ -31,7 +33,6 @@ Route::group(array('middleware' => 'auth'), function()
 	Route::resource('repairs', 'RepairsController');
 });
 
-Route::model('staff', 'App\Staff');
 //Route::resource('staff', 'StaffController');
 Route::group(array('middleware' => ['auth', 'admin']), function()
 {

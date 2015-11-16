@@ -43,6 +43,7 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
+        var_dump($input);
         Client::create( $input );
 
         return Redirect::route('clients.index')->with('message', 'Client created');
@@ -65,9 +66,9 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CLient $client)
     {
-        //
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -77,9 +78,15 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Client $client)
     {
         //
+        $input = array_except(Input::all(), ['_method']);
+
+        $client->update( $input );
+
+
+        return Redirect::route('clients.index')->with('message', 'Client updated');
     }
 
     /**
@@ -88,8 +95,11 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
-        //
+        // TODO: check for dependencies
+        $client->delete();
+
+        return Redirect::route('staff.index')->with('message', 'Staff deleted');
     }
 }
