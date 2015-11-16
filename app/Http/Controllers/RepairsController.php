@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Redirect;
+use Input;
 
 class RepairsController extends Controller
 {
@@ -20,7 +21,7 @@ class RepairsController extends Controller
     {
 	    $repairs = Repair::all();
 
-        return view('repairs', ['repairs' => $repairs, 'count' => Repair::count()] );
+        return view('repairs.index', ['repairs' => $repairs, 'count' => Repair::count()] );
     }
 
     /**
@@ -30,7 +31,7 @@ class RepairsController extends Controller
      */
     public function create()
     {
-        //
+        return view('repairs.create', [] );
     }
 
     /**
@@ -41,7 +42,10 @@ class RepairsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Input::all();
+        Repairs::create( $input );
+
+        return Redirect::route('repairs.index')->with('message', 'Repair created');
     }
 
     /**
@@ -61,9 +65,9 @@ class RepairsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Repair $repair)
     {
-        //
+        return view('repairs.edit', compact('repair'));
     }
 
     /**
@@ -73,9 +77,14 @@ class RepairsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Repair $repair)
     {
-        //
+        $input = array_except(Input::all(), ['_method']);
+
+        $repair->update( $input );
+
+
+        return Redirect::route('repairs.index')->with('message', 'Repair updated');
     }
 
     /**
