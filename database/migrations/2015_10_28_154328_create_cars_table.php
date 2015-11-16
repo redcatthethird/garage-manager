@@ -18,6 +18,7 @@ class CreateCarsTable extends Migration
             $table->integer('ClientID')->unsigned();
             $table->string('Model');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('Cars', function (Blueprint $table) {

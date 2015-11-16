@@ -85,20 +85,11 @@ class StaffController extends Controller
 
         //Event::listen('illuminate.query', function($query, $bindings, $time) { error_log($query); });
         $input = array_except(Input::all(), ['_method']);
-        try{
-            $staff->update( $input ); // returns false
-            $staff->save();
-            var_dump($input);
-        }
-        catch(Exception $e){
-           // do task when error
-           var_dump($e->getMessage());   // insert query
-        }
-        dd(DB::getQueryLog());
 
-        // TODO: try editing single values
+        $staff->update( $input );
 
-        //return Redirect::route('staff.show', $staff->Id)->with('message', 'Staff updated');
+
+        return Redirect::route('staff.index')->with('message', 'Staff updated');
     }
 
     /**
@@ -107,8 +98,10 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Staff $staff)
     {
-        //
+        $staff->delete();
+
+        return Redirect::route('staff.index')->with('message', 'Staff deleted');
     }
 }
