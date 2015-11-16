@@ -97,9 +97,13 @@ class ClientsController extends Controller
      */
     public function destroy(Client $client)
     {
-        if ()
-        $client->delete();
+        if ($client->cars->count() == 0)
+        {
+            $client->delete();
+            return Redirect::route('clients.index')->with('message', 'Client deleted');
+        }
 
-        return Redirect::route('staff.index')->with('message', 'Staff deleted');
+        return Redirect::route('clients.index')->with('message', 'Client NOT deleted; delete the associated cars first');
+
     }
 }

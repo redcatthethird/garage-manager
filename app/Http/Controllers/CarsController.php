@@ -19,7 +19,7 @@ class CarsController extends Controller
     {
         $cars = Car::all();
 
-        return view('cars', ['cars' => $cars, 'count' => Car::count()] );
+        return view('cars.index', ['cars' => $cars, 'count' => Car::count()] );
     }
 
     /**

@@ -97,7 +97,7 @@ table tr:last-child td:last-child {
 table tr:hover td {
 	background: #f2f2f2;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
 }
 th, td {
 	padding: .3em;
@@ -106,8 +106,10 @@ th, td {
 </head>
 <body>
 <header>
-<p>You are logged in as {{ Auth::user()['name'] }}</p>
+<p>You are logged in as {{ Auth::user()['name'] }}{{ Auth::user()->isAdmin ? " (admin)" : "" }}</p>
 <br/>
-	<a href="{{ URL::route('registerRoute') }}">Register new user</a>
+	@if (Auth::user()->isAdmin)
+			<a href="{{ URL::route('registerRoute') }}">Register new user</a>
+	@endif
 	<a href="{{ URL::route('logoutRoute') }}">Logout</a>
 </header>
