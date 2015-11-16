@@ -7,6 +7,7 @@ use App\Repair;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Redirect;
 
 class RepairsController extends Controller
 {
@@ -15,12 +16,18 @@ class RepairsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $repairs = Repair::all();
+        if ($request->user()) {
+			
+	    $repairs = Repair::all();
 
         return view('repairs', ['repairs' => $repairs, 'count' => Repair::count()] );
+		}
+		
+		else return redirect('auth/login');
+		
+       
     }
 
     /**

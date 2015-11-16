@@ -88,7 +88,7 @@ class StaffController extends Controller
         try{
             $staff->update( $input ); // returns false
             $staff->save();
-            var_dump("expression");
+            var_dump($input);
         }
         catch(Exception $e){
            // do task when error

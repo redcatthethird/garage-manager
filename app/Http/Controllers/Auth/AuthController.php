@@ -20,6 +20,9 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
+	
+	protected $redirectPath = '/repairs';
+	protected $loginPath = '/auth/login';
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
@@ -29,7 +32,8 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {	
+		
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 

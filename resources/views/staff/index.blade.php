@@ -19,9 +19,9 @@
 		<td>{{$staff[$i]['Address']}}</td>
 		<td>{{$staff[$i]['PhoneNo']}}</td>
 		<td>{{$staff[$i]['Email']}}</td>
+		
 		<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}">Edit</a></td>
 		<td><a href="{{ URL::route('staff.destroy', array($staff[$i]['Id'])) }}">Delete</a></td>
-	</tr>
 	@endfor
 </table>
 @include ('foot')

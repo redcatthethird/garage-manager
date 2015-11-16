@@ -48,6 +48,7 @@
  						 <li><a href="staff">Staff</a></li>
  						 <li><a href="cars">Cars</a></li>
  						 <li><a href="customer">Customers</a></li>
+						 <li><a href="repairs">Repairs</a></li>
 					 </ul></div>
             </div>
         </div>
