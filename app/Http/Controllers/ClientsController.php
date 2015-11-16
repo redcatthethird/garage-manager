@@ -97,7 +97,7 @@ class ClientsController extends Controller
      */
     public function destroy(Client $client)
     {
-        // TODO: check for dependencies
+        if ()
         $client->delete();
 
         return Redirect::route('staff.index')->with('message', 'Staff deleted');

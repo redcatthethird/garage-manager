@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Staff extends Model
 {
-
-
 	use SoftDeletes;
 
 	protected $dates = ['deleted_at'];
@@ -18,4 +16,9 @@ class Staff extends Model
 
 	//protected $guarded = [];
 	protected $fillable = ['Name', 'Address', 'PhoneNo', 'Email'];
+
+	public function repairs()
+	{
+		return $this->hasMany('App\Staff', 'StaffId', 'Id');
+	}
 }

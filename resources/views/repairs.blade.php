@@ -16,9 +16,9 @@
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
-		<td>{{$repairs[$i]['Id']}}</td>
+		<td><a href="{{ URL::route('repairs.show', array($repairs[$i]['Id'])) }}">{{$repairs[$i]['Id']}}</a></td>
 		<td><a href="{{ URL::route('cars.show', array($repairs[$i]['LicencePlate'])) }}">{{ $repairs[$i]['LicencePlate'] }}</a></td>
-		<td><a href="{{ URL::route('staff.show', array($repairs[$i]['Id'])) }}">{{ $repairs[$i]['Id'] }}</a></td>
+		<td><a href="{{ URL::route('staff.show', array($repairs[$i]['StaffId'])) }}">{{ $repairs[$i]['StaffId'] }}</a></td>
 		<td>{{ $repairs[$i]['Ongoing'] ? 'Yes' : 'No' }}</td>
 		<td>{{ $repairs[$i]['Type'] }}</td>
 		<td>{{ $repairs[$i]['Comments'] }}</td>

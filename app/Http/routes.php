@@ -26,7 +26,7 @@ Route::model('clients', 'App\Client');
 Route::model('cars', 'App\Car');
 Route::model('repairs', 'App\Repair');
 
-Route::group(array('middleware' => 'auth'), function()
+Route::group(['middleware' => 'auth'], function()
 {
 	Route::get('/', 'RepairsController@index');
 
@@ -35,19 +35,11 @@ Route::group(array('middleware' => 'auth'), function()
 	Route::resource('repairs', 'RepairsController');
 });
 
-//Route::resource('staff', 'StaffController');
-Route::group(array('middleware' => ['auth', 'admin']), function()
+Route::group(['middleware' => ['auth', 'admin']], function()
 {
-  //Route::resource('user', 'UserController',
-  //                ['only' => ['edit']]);
 	Route::resource('staff', 'StaffController');
 
 	Route::resource('cars', 'CarsController', ['except' => ['show', 'index', 'create', 'store']]);
 	Route::resource('clients', 'ClientsController', ['except' => ['show', 'index', 'create', 'store']]);
 	Route::resource('repairs', 'RepairsController', ['only' => ['destroy']]);
 });
-/*
-Route::get('/staff', 'StaffController@index');
-Route::get('/staff/{id}', [
-    'as' => 'showStaff', 'uses' => 'StaffController@show'
-]);*/
