@@ -25,7 +25,7 @@ class RepairsController extends Controller
             return view('repairs', ['repairs' => $repairs, 'count' => Repair::count()] );
 		}
 
-		else return redirect('auth/login');
+		else return redirect('login');
     }
 
     /**

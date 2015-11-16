@@ -22,6 +22,11 @@
     </div>
 
     <div>
+        <input type="checkbox" name="isAdmin">
+        Administrative account
+    </div>
+
+    <div>
         <button type="submit">Register</button>
     </div>
 </form>

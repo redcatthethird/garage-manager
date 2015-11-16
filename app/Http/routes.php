@@ -13,15 +13,13 @@
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', 'Auth\AuthController@getLogout');
+Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logoutRoute']);
 
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'RepairsController@index');
 
 Route::get('/greeting', 'Greeting@greet');
 
@@ -39,7 +37,7 @@ Route::get('/staff/{id}', [
     'as' => 'showStaff', 'uses' => 'StaffController@show'
 ]);*/
 
-Route::get('/repairs', 'RepairsController@index');
+Route::get('/repairs', ['uses' => 'RepairsController@index']);
 Route::get('/repairs/{id}', [
     'as' => 'showRepair', 'uses' => 'RepairsController@show'
 ]);

@@ -22,7 +22,8 @@
 		<td>{{$staff[$i]['Address']}}</td>
 		<td>{{$staff[$i]['PhoneNo']}}</td>
 		<td>{{$staff[$i]['Email']}}</td>
-		
+
+
 		<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}">Edit</a></td>
 
 		<td>{!! Form::open(['route' => ['staff.destroy', $staff[$i]['Id']], 'method' => 'DELETE']) !!}
