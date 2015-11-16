@@ -15,7 +15,7 @@ class StaffSeeder extends Seeder
         DB::table('Repairs')->delete();
         DB::table('Staff')->delete();
 
-        $staff = []
+        $staff = [
   ['Name' => 'Bogdănel Morcov','Address' => '','PhoneNo' => '','Email' => ''],
   ['Name' => 'Maria Georgeta','Address' => '','PhoneNo' => '','Email' => ''],
   ['Name' => 'John Smith','Address' => '','PhoneNo' => '','Email' => ''],
