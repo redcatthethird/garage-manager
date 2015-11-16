@@ -1,7 +1,7 @@
 @include ('head', ['title' => "List of repairs"])
 <h1>List of repairs</h1>
 </br>
-<a href="{{ URL::route('staff.create') }}">Create</a>
+<a href="{{ URL::route('repairs.create') }}">Create</a>
 </br>
 <table border="1">
 	<tr>
@@ -30,9 +30,9 @@
 		<td>{{ $repairs[$i]['EndDate'] }}</td>
 		<td>{{ '£' . $repairs[$i]['Cost'] }}</td>
 		<td>{{ $repairs[$i]['Paid'] ? 'Yes' : 'No' }}</td>
-		
+
 		<td><a href="{{ URL::route('repairs.edit', array($repairs[$i]['Id'])) }}">Edit</a></td>
-		
+
 		<td>{!! Form::open(['route' => ['repairs.destroy', $repairs[$i]['Id']], 'method' => 'DELETE']) !!}
 			{!! Form::submit('Delete') !!}
 			{!! Form::close() !!}</td>
