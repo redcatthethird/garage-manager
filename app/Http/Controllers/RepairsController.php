@@ -43,8 +43,19 @@ class RepairsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
-        Repair::create( $input );
 
+        $this->validate($request, [
+            'LicencePlate' => ['required','exists:Cars','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
+            'StaffId' => 'required|exists:Staff,Id',
+            'Ongoing' => 'boolean',
+            'Type' => 'required',
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date|after:StartDate',
+            'Cost' => 'required|numeric',
+            'Paid' => 'boolean',
+        ]);
+
+        Repair::create( $input );
         return Redirect::route('repairs.index')->with('message', 'Repair created');
     }
 
@@ -77,10 +88,20 @@ class RepairsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Repair $repair)
+    public function update(Repair $repair, Request $request)
     {
         $input = array_except(Input::all(), ['_method']);
 
+        $this->validate($request, [
+            'LicencePlate' => ['required','exists:Cars','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
+            'StaffId' => 'required|exists:Staff,Id',
+            'Ongoing' => 'boolean',
+            'Type' => 'required',
+            'StartDate' => 'required|date',
+            'EndDate' => 'required|date|after:StartDate',
+            'Cost' => 'required|numeric',
+            'Paid' => 'boolean',
+        ]);
         $repair->update( $input );
 
 
