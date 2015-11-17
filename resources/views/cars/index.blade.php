@@ -22,9 +22,9 @@
 		<td>{{$cars[$i]['Model']}}</td>
 
 		@if (Auth::user()->isAdmin)
-			<td><a href="{{ URL::route('cars.edit', array($cars[$i]['Id'])) }}">Edit</a></td>
+			<td><a href="{{ URL::route('cars.edit', array($cars[$i]['LicencePlate'])) }}">Edit</a></td>
 
-			<td>{!! Form::open(['route' => ['cars.destroy', $cars[$i]['Id']], 'method' => 'DELETE']) !!}
+			<td>{!! Form::open(['route' => ['cars.destroy', $cars[$i]['LicencePlate']], 'method' => 'DELETE']) !!}
 				{!! Form::submit('Delete') !!}
 			{!! Form::close() !!}</td>
 		@endif

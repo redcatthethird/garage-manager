@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use App\Car;
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Input;
-use Redirect;
 
-class CarsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +16,7 @@ class CarsController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
-
-        return view('cars.index', ['cars' => $cars, 'count' => Car::count()] );
+        //
     }
 
     /**
@@ -31,7 +26,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        return view('cars.create', [] );
+        //
     }
 
     /**
@@ -42,10 +37,7 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        $input = Input::all();
-        Car::create( $input );
-
-        return Redirect::route('cars.index')->with('message', 'Car added');
+        //
     }
 
     /**
@@ -54,9 +46,9 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show($id)
     {
-        //var_dump($car->repairs->first());
+        //
     }
 
     /**
@@ -65,9 +57,9 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit($id)
     {
-        return view('cars.edit', compact('car'));
+        //
     }
 
     /**
@@ -77,14 +69,9 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Car $car)
+    public function update(Request $request, $id)
     {
-        $input = array_except(Input::all(), ['_method']);
-
-        $car->update( $input );
-
-
-        return Redirect::route('cars.index')->with('message', 'Car updated');
+        //
     }
 
     /**
@@ -93,14 +80,8 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        if ($car->repairs->count() == 0)
-        {
-            $car->delete();
-            return Redirect::route('cars.index')->with('message', 'Car deleted');
-        }
-
-        return Redirect::route('cars.index')->with('message', 'Car NOT deleted; delete the associated cars first');
+        //
     }
 }

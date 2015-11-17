@@ -24,7 +24,9 @@
     </div>
 
     <div>
-        <input type="checkbox" name="isAdmin">
+		{!! Form::hidden('isAdmin',false) !!}
+		{!! Form::checkbox('isAdmin',true) !!}
+        <!--input type="checkbox" name="isAdmin"-->
         Administrative account
     </div>
 

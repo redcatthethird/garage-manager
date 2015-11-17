@@ -43,7 +43,7 @@ class RepairsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
-        Repairs::create( $input );
+        Repair::create( $input );
 
         return Redirect::route('repairs.index')->with('message', 'Repair created');
     }
@@ -93,8 +93,10 @@ class RepairsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Repair $repair)
     {
-        //
+        $repair->delete();
+
+        return Redirect::route('repairs.index')->with('message', 'Repair deleted');
     }
 }
