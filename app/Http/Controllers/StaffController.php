@@ -46,8 +46,13 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
-        Staff::create( $input );
+        $this->validate($request, [
+            'Name' => 'required|string',
+            'PhoneNo' => 'digits:11',
+            'Email' => 'email'
+        ]);
 
+        Staff::create( $input );
         return Redirect::route('staff.index')->with('message', 'Staff created');
     }
 
@@ -80,15 +85,16 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Staff $staff)
+    public function update(Staff $staff, Request $request)
     {
-
-        //Event::listen('illuminate.query', function($query, $bindings, $time) { error_log($query); });
         $input = array_except(Input::all(), ['_method']);
+        $this->validate($request, [
+            'Name' => 'required|string',
+            'PhoneNo' => 'digits:11',
+            'Email' => 'email'
+        ]);
 
         $staff->update( $input );
-
-
         return Redirect::route('staff.index')->with('message', 'Staff updated');
     }
 

@@ -1,9 +1,9 @@
-@include ('head', ['title' => "Edit car details"])
+@include ('head', ['title' => "Edit staff member"])
 
-<h2>Edit car details</h2>
+<h2>Edit staff member</h2>
 
-{!! Form::model($car, ['method' => 'PATCH', 'route' => ['cars.update', $car->LicencePlate]]) !!}
-	@include('cars/partials/_form', ['submit_text' => 'Edit car'])
+{!! Form::model($staff, ['method' => 'PATCH', 'route' => ['staff.update', $staff->Id]]) !!}
+	@include('staff/partials/_form', ['submit_text' => 'Edit staff'])
 {!! Form::close() !!}
 
 @include ('foot')
