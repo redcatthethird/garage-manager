@@ -8,16 +8,16 @@
 </div>
 <div class="form-group">
 	{!! Form::label('Ongoing', 'Ongoing?') !!}
-	{!! Form::text('Ongoing') !!}
+	{!! Form::checkbox('Ongoing') !!}
 </div>
 <div class="form-group">
-	{!! Form::label('Type', 'Type') !!}
+	{!! Form::label('Type', 'Repair type') !!}
 	{!! Form::text('Type') !!}
 </div>
 
 <div class="form-group">
 	{!! Form::label('Comments', 'Comments') !!}
-	{!! Form::text('Comments') !!}
+	{!! Form::textarea('Comments') !!}
 </div>
 
 <div class="form-group">
@@ -37,7 +37,7 @@
 
 <div class="form-group">
 	{!! Form::label('Paid', 'Paid') !!}
-	{!! Form::text('Paid') !!}
+	{!! Form::checkbox('Paid') !!}
 </div>
 
 <div class="form-group">
