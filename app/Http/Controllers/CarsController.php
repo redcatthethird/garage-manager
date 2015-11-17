@@ -43,6 +43,12 @@ class CarsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
+		//var_dump($request);
+		$this->validate($request, [
+        'LicencePlate' => ['required','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
+        'ClientId' => ['required','exists:Clients,Id'],
+		]);
+		
         Car::create( $input );
 
         return Redirect::route('cars.index')->with('message', 'Car added');
@@ -66,7 +72,8 @@ class CarsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Car $car)
-    {
+    {	
+		 
         return view('cars.edit', compact('car'));
     }
 
@@ -77,9 +84,15 @@ class CarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Car $car)
+    public function update(Car $car, Request $request)
     {
         $input = array_except(Input::all(), ['_method']);
+		
+		
+		$this->validate($request, [
+        'LicencePlate' => ['required','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
+        'ClientId' => ['required','exists:Clients,Id'],
+		]);
 
         $car->update( $input );
 

@@ -43,7 +43,12 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
-        var_dump($input);
+		
+        $this->validate($request, [
+        'LicencePlate' => ['required','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
+        'ClientId' => ['required','exists:Clients,Id'],
+		]);
+		
         Client::create( $input );
 
         return Redirect::route('clients.index')->with('message', 'Client created');
