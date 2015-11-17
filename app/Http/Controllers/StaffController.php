@@ -48,7 +48,8 @@ class StaffController extends Controller
         $input = Input::all();
         $this->validate($request, [
             'Name' => 'required|string',
-            'PhoneNo' => 'digits:11',
+            'PhoneNo' => 'required|digits:11',
+			'Address'=>'required',
             'Email' => 'email'
         ]);
 
@@ -91,6 +92,7 @@ class StaffController extends Controller
         $this->validate($request, [
             'Name' => 'required|string',
             'PhoneNo' => 'digits:11',
+			'Address'=>'required',
             'Email' => 'email'
         ]);
 
