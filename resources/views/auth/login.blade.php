@@ -1,3 +1,5 @@
+@include ('head', ['title' => "Login"])
+
 <form method="POST" action="login">
     {!! csrf_field() !!}
 
@@ -19,3 +21,5 @@
         <button type="submit">Login</button>
     </div>
 </form>
+
+@include ('foot')

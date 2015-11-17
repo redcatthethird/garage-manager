@@ -1,3 +1,5 @@
+@include ('head', ['title' => "Register"])
+
 <form method="POST" action="register">
     {!! csrf_field() !!}
 
@@ -30,3 +32,5 @@
         <button type="submit">Register</button>
     </div>
 </form>
+
+@include ('foot')
