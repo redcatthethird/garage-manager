@@ -124,7 +124,8 @@ th, td {
 	@endif
 	@if (session('errors'))
     <h1 class="error error-success">
-        {{ session('errors') }}
+        {{var_dump( session('errors')) }}
+		
     </h1>
 	@endif
     <h1>
