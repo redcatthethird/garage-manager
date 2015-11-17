@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <title>{{$title}}</title>
 <style>
 table a:link {

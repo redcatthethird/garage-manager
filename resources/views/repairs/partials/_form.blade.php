@@ -22,12 +22,14 @@
 
 <div class="form-group">
 	{!! Form::label('StartDate', 'Start Date') !!}
-	{!! Form::text('StartDate') !!}
+	{!! Form::text('StartDate', 'dd-mm-yy', array('class' => 'datepicker')) !!}
+	
 </div>
 
 <div class="form-group">
 	{!! Form::label('EndDate', 'Expected End Date') !!}
-	{!! Form::text('EndDate') !!}
+	{!! Form::text('EndDate', 'dd-mm-yy', array('class' => 'datepicker')) !!}
+	
 </div>
 
 <div class="form-group">
