@@ -104,7 +104,7 @@ th, td {
 }
 
 .alert { color: cadetblue; }
-.error { color: red; }
+.error { color: brown; }
 </style>
 </head>
 <body>
@@ -113,21 +113,20 @@ th, td {
 		<p>You are logged in as {{ Auth::user()['name'] }}{{ Auth::user()->isAdmin ? " (admin)" : "" }}</p>
 		<br/>
 		@if (Auth::user()->isAdmin)
-				<a href="{{ URL::route('registerRoute') }}">Register new user</a>
+			<a href="{{ URL::route('registerRoute') }}">Register new user</a>
 		@endif
+		<a href="{{ URL::route('logoutRoute') }}">Logout</a>
 	@endif
-	<a href="{{ URL::route('logoutRoute') }}">Logout</a>
-	@if (session('message'))
-    <h1 class="alert alert-success">
-        {{ Session::get('message') }}
-    </h1>
+	@if ($message = Session::get('message'))
+	    <h1 class="alert alert-success">
+	        {{ $message }}
+	    </h1>
 	@endif
-	@if (session('errors'))
-    <h1 class="error error-success">
-        {{ session('errors') }}
-    </h1>
+	@if ($errors = Session::get('errors'))
+		@foreach ($errors->all() as $error)
+		    <h1 class="error error-success">
+		        {{ $error }}
+		    </h1>
+		@endforeach
 	@endif
-    <h1>
-        {{ var_dump(Session::all()) }}
-    </h1>
 </header>
