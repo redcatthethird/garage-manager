@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -52,21 +53,45 @@ class AuthController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        //Auth::login();
+        $this->create($request->all());
+
+        return redirect($this->redirectPath());
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return User
      */
     protected static function create(array $data)
-    {	
-		$data["isAdmin"] = ($data["isAdmin"] == "1") ? true : false;
-		
-        return User::create([
+    {
+        $data["isAdmin"] = ($data["isAdmin"] == "1") ? true : false;
+		$data["password"] = bcrypt($data['password']);
+
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
 			'isAdmin' => $data['isAdmin'],
-        ]);
-	
+        ]);*/
+        return User::create($data);
+
     }
 }
