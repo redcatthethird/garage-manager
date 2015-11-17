@@ -1,18 +1,14 @@
 <div class="form-group">
-	{!! Form::label('Name', 'Name:') !!}
-	{!! Form::text('Name') !!}
+	{!! Form::label('LicencePlate', 'LicencePlate:') !!}
+	{!! Form::text('LicencePlate') !!}
 </div>
 <div class="form-group">
-	{!! Form::label('Address', 'Address:') !!}
-	{!! Form::text('Address') !!}
+	{!! Form::label('ClientId', 'ClientId:') !!}
+	{!! Form::text('ClientId') !!}
 </div>
 <div class="form-group">
-	{!! Form::label('PhoneNo', 'Phone number:') !!}
-	{!! Form::text('PhoneNo') !!}
-</div>
-<div class="form-group">
-	{!! Form::label('Email', 'E-mail:') !!}
-	{!! Form::text('Email') !!}
+	{!! Form::label('Model', 'Model:') !!}
+	{!! Form::text('Model') !!}
 </div>
 
 <div class="form-group">
