@@ -43,7 +43,7 @@
 			<td>{{ $repair->car->owner->Name . ' [' . $repair->car->ClientId . ']' }}</td>
 			<td>{{ $repair['Type'] }}</td>
 			<td>{{ $repair['Comments'] }}</td>
-			@if (Auth::user()->isAdmin && $repairs[$i]->staff->deleted_at === null)
+			@if (Auth::user()->isAdmin && $repair->staff->deleted_at === null)
 				<td><a href="{{ URL::route('staff.show', array($repair['StaffId'])) }}">{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']'  }}</a></td>
 			@else
 				<td>{{ $repair->staff->Name . '(' . $repair['StaffId'] . ')' }}</td>
