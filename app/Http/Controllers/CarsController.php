@@ -48,7 +48,7 @@ class CarsController extends Controller
         'LicencePlate' => ['required','unique:Cars','regex:/\b([A-Z]{3}\s?(\d{3}|\d{2}|d{1})\s?[A-Z])|([A-Z]\s?(\d{3}|\d{2}|\d{1})\s?[A-Z]{3})|(([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3})\b/'],
         'ClientId' => ['required','exists:Clients,Id'],
 		]);
-		
+
         Car::create( $input );
 
         return Redirect::route('cars.index')->with('message', 'Car added');
@@ -62,7 +62,9 @@ class CarsController extends Controller
      */
     public function show(Car $car)
     {
-        //var_dump($car->repairs->first());
+        $repairs = $car->repairs;
+
+        return view('cars.show', ['cars' => $cars, 'count' => Car::count()] );
     }
 
     /**
