@@ -19,6 +19,7 @@ class Repair extends Model
 	{
 		return $this->belongsTo('App\Car', 'LicencePlate', 'LicencePlate');
 	}
+	
 
 	/*
 	public function client()

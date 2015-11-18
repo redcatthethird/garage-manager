@@ -8,12 +8,13 @@
 		<th>ID</th>
 		<th>Plate Number</th>
 		<th>Model</th>
-		<th>Staff in charge</th>
-		<th>Ongoing?</th>
+		<th>Client</th>
 		<th>Type</th>
 		<th>Comments</th>
+		<th>Staff in charge</th>
 		<th>Start Date</th>
 		<th>Expected End Date</th>
+		<th>Ongoing?</th>
 		<th>Cost</th>
 		<th>Paid?</th>
 		<th>Edit</th>
@@ -24,17 +25,18 @@
 		<td>{{$repairs[$i]['Id']}}</td>
 		<td><a href="{{ URL::route('cars.show', array($repairs[$i]['LicencePlate'])) }}">{{ $repairs[$i]['LicencePlate'] }}</a></td>
 		<td>{{ $repairs[$i]->car->Model }}</td>
-		
+		<!--td>{{ $repairs[$i]->car->owner->name }}</td-->
+		<td>{{ $repairs[$i]->car->owner->Name . ' [' . $repairs[$i]->car->owner->Id . ']' }}</td>
+		<td>{{ $repairs[$i]['Type'] }}</td>
+		<td>{{ $repairs[$i]['Comments'] }}</td>
 		@if (Auth::user()->isAdmin)
 			<td><a href="{{ URL::route('staff.show', array($repairs[$i]['StaffId'])) }}">{{ $repairs[$i]->staff->Name . ' [' . $repairs[$i]['StaffId'] . ']'  }}</a></td>
 		@else
 			<td>{{ $repairs[$i]->staff->Name . '(' . $repairs[$i]['StaffId'] . ')' }}</td>
 		@endif
-		<td>{{ $repairs[$i]['Ongoing'] ? 'Yes' : 'No' }}</td>
-		<td>{{ $repairs[$i]['Type'] }}</td>
-		<td>{{ $repairs[$i]['Comments'] }}</td>
 		<td>{{ $repairs[$i]['StartDate'] }}</td>
 		<td>{{ $repairs[$i]['EndDate'] }}</td>
+		<td>{{ $repairs[$i]['Ongoing'] ? 'Yes' : 'No' }}</td>
 		<td>{{ '£' . $repairs[$i]['Cost'] }}</td>
 		<td>{{ $repairs[$i]['Paid'] ? 'Yes' : 'No' }}</td>
 
