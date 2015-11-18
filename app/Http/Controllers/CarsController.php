@@ -62,9 +62,8 @@ class CarsController extends Controller
      */
     public function show(Car $car)
     {
-        $repairs = $car->repairs;
 
-        return view('cars.show', ['cars' => $cars, 'count' => Car::count()] );
+        return view('cars.show', ['car' => $car] );
     }
 
     /**

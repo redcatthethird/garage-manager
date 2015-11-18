@@ -43,14 +43,14 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         $input = Input::all();
-		
+
         $this->validate($request, [
             'Name' => 'required|string',
             'PhoneNo' => 'required|digits:11',
 			'Address'=>'required',
             'Email' => 'email'
         ]);
-		
+
         Client::create( $input );
 
         return Redirect::route('clients.index')->with('message', 'Client created');

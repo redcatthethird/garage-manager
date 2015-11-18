@@ -17,7 +17,6 @@
 		<th>Paid?</th>
 		<th>Edit</th>
 		<th>Delete</th>
-	
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
@@ -37,7 +36,6 @@
 		<td>{{ $repairs[$i]['Paid'] ? 'Yes' : 'No' }}</td>
 
 		<td><a href="{{ URL::route('repairs.edit', array($repairs[$i]['Id'])) }}">Edit</a></td>
-		
 
 		<td>{!! Form::open(['route' => ['repairs.destroy', $repairs[$i]['Id']], 'method' => 'DELETE']) !!}
 			{!! Form::submit('Delete') !!}
