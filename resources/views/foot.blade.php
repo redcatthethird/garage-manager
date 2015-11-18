@@ -4,7 +4,7 @@
   <script>
  
   $(function() {
-    $( ".datepicker" ).datepicker({
+    $( "input[name$=Date" ).datepicker({
 	dateFormat: "dd-mm-yy"
 	});
   });
