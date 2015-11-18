@@ -64,7 +64,7 @@ class ClientsController extends Controller
      */
     public function show(Client $client)
     {
-        //var_dump($client->cars()->first());
+        return view('clients.show', ['client' => $client]);
     }
 
     /**

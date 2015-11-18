@@ -18,7 +18,7 @@
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
 		<td><a href="{{ URL::route('cars.show', array($cars[$i]['LicencePlate'])) }}">{{ $cars[$i]['LicencePlate'] }}</a></td>
-		<td><a href="{{ URL::route('clients.show', array($cars[$i]['ClientId'])) }}">{{ $cars[$i]['ClientId'] }}</a></td>
+		<td><a href="{{ URL::route('clients.show', array($cars[$i]->ClientId)) }}">{{ $cars[$i]->owner->Name . ' [' . $cars[$i]->ClientId . ']' }}</a></td>
 		<td>{{$cars[$i]['Model']}}</td>
 
 		@if (Auth::user()->isAdmin)

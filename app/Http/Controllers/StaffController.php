@@ -63,9 +63,10 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Staff $staff)
     {
-        //
+        if ($staff->deleted_at !== null) abort(410);
+        return view('staff.show', compact('staff'));
     }
 
     /**
@@ -76,6 +77,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
+        if ($staff->deleted_at !== null) abort(410);
         return view('staff.edit', compact('staff'));
     }
 
@@ -88,6 +90,7 @@ class StaffController extends Controller
      */
     public function update(Staff $staff, Request $request)
     {
+        if ($staff->deleted_at !== null) abort(410);
         $input = array_except(Input::all(), ['_method']);
         $this->validate($request, [
             'Name' => 'required|string',
@@ -108,6 +111,7 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
+        if ($staff->deleted_at !== null) abort(410);
         $staff->delete();
 
         return Redirect::route('staff.index')->with('message', 'Staff deleted');

@@ -18,17 +18,19 @@
 		<th>Cost</th>
 		<th>Paid?</th>
 		<th>Edit</th>
-		<th>Delete</th>
+		@if (Auth::user()->isAdmin)
+			<th>Delete</th>
+		@endif
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
 		<td>{{$repairs[$i]['Id']}}</td>
 		<td><a href="{{ URL::route('cars.show', array($repairs[$i]['LicencePlate'])) }}">{{ $repairs[$i]['LicencePlate'] }}</a></td>
 		<td>{{ $repairs[$i]->car->Model }}</td>
-		<td><a href="{{ URL::route('clients.show', array($repairs[$i]->car->OwnerId)) }}">{{ $repairs[$i]->car->owner->Name . ' [' . $repairs[$i]->car->owner->Id . ']' }}</a></td>
+		<td><a href="{{ URL::route('clients.show', array($repairs[$i]->car->ClientId)) }}">{{ $repairs[$i]->car->owner->Name . ' [' . $repairs[$i]->car->owner->Id . ']' }}</a></td>
 		<td>{{ $repairs[$i]['Type'] }}</td>
 		<td>{{ $repairs[$i]['Comments'] }}</td>
-		@if (Auth::user()->isAdmin)
+		@if (Auth::user()->isAdmin && $repairs[$i]->staff->deleted_at === null)
 			<td><a href="{{ URL::route('staff.show', array($repairs[$i]['StaffId'])) }}">{{ $repairs[$i]->staff->Name . ' [' . $repairs[$i]['StaffId'] . ']'  }}</a></td>
 		@else
 			<td>{{ $repairs[$i]->staff->Name . '(' . $repairs[$i]['StaffId'] . ')' }}</td>
@@ -41,9 +43,11 @@
 
 		<td><a href="{{ URL::route('repairs.edit', array($repairs[$i]['Id'])) }}">Edit</a></td>
 
-		<td>{!! Form::open(['route' => ['repairs.destroy', $repairs[$i]['Id']], 'method' => 'DELETE']) !!}
-			{!! Form::submit('Delete') !!}
-			{!! Form::close() !!}</td>
+		@if (Auth::user()->isAdmin)
+			<td>{!! Form::open(['route' => ['repairs.destroy', $repairs[$i]['Id']], 'method' => 'DELETE']) !!}
+				{!! Form::submit('Delete') !!}
+				{!! Form::close() !!}</td>
+		@endif
 	</tr>
 	@endfor
 </table>

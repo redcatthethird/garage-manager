@@ -19,6 +19,6 @@ class Staff extends Model
 
 	public function repairs()
 	{
-		return $this->hasMany('App\Staff', 'StaffId', 'Id');
+		return $this->hasMany('App\Repair', 'StaffId', 'Id');
 	}
 }

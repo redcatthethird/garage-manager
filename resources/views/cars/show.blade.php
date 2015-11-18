@@ -28,7 +28,9 @@
 		<th>Cost</th>
 		<th>Paid?</th>
 		<th>Edit</th>
-		<th>Delete</th>
+		@if (Auth::user()->isAdmin)
+			<th>Delete</th>
+		@endif
 	</tr>
 	@foreach ($car->repairs as $repair)
 	<tr>
@@ -38,7 +40,7 @@
 		<td><a href="{{ URL::route('clients.show', array($repair->car->ClientId)) }}">{{ $repair->car->owner->Name . ' [' . $repair->car->ClientId . ']' }}</a></td>
 		<td>{{ $repair['Type'] }}</td>
 		<td>{{ $repair['Comments'] }}</td>
-		@if (Auth::user()->isAdmin)
+		@if (Auth::user()->isAdmin && $repair->staff->deleted_at === null)
 			<td><a href="{{ URL::route('staff.show', array($repair['StaffId'])) }}">{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']'  }}</a></td>
 		@else
 			<td>{{ $repair->staff->Name . '(' . $repair['StaffId'] . ')' }}</td>
@@ -52,9 +54,11 @@
 		<td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}">Edit</a></td>
 
 
-		<td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
-			{!! Form::submit('Delete') !!}
-			{!! Form::close() !!}</td>
+		@if (Auth::user()->isAdmin)
+			<td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
+				{!! Form::submit('Delete') !!}
+				{!! Form::close() !!}</td>
+		@endif
 	</tr>
 	@endforeach
 </table>

@@ -17,7 +17,7 @@
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
 		<td><a href="{{ URL::route('staff.show', array($staff[$i]['Id'])) }}">{{ $staff[$i]['Id'] }}</a></td>
-		<td>{{$staff[$i]['Name']}}</td>
+		<td><a href="{{ URL::route('staff.show', array($staff[$i]['Id'])) }}">{{$staff[$i]['Name']}}</a></td>
 		<td>{{$staff[$i]['Address']}}</td>
 		<td>{{$staff[$i]['PhoneNo']}}</td>
 		<td>{{$staff[$i]['Email']}}</td>
