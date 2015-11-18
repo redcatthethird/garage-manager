@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <title>{{$title}}</title>
 <style>
 table a:link {
@@ -118,6 +119,7 @@ th, td {
 			<a href="{{ URL::route('registerRoute') }}">Register new user</a>
 		@endif
 		<a href="{{ URL::route('logoutRoute') }}">Logout</a>
+	
 	@endif
 	@if ($message = Session::get('message'))
 	    <h1 class="alert alert-success">

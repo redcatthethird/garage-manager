@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use Redirect;
+use Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('users.index', ['user' => $user, 'count' => User::count()] );
     }
 
     /**
@@ -57,7 +62,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -69,7 +74,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user,Request $request)
     {
         //
     }
@@ -80,8 +85,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(User $user)
+    {	
+		var_dump($user->id);
+		var_dump(Auth::user()->id);
+        if (Auth::user()->id != $user->id)
+		{	
+			$user->delete();
+			return Redirect::route('users.index')->with('message', 'User deleted');
+		}
+		
+		return Redirect::route('users.index')->with('message', 'You cannot delete the user that you are currently logged in as');
     }
 }
