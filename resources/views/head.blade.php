@@ -106,6 +106,8 @@ th, td {
 .alert { color: cadetblue; }
 .error { color: brown; }
 </style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+    rel="stylesheet">
 </head>
 <body>
 <header>
@@ -130,3 +132,6 @@ th, td {
 		@endforeach
 	@endif
 </header>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
