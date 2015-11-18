@@ -25,8 +25,7 @@
 		<td>{{$repairs[$i]['Id']}}</td>
 		<td><a href="{{ URL::route('cars.show', array($repairs[$i]['LicencePlate'])) }}">{{ $repairs[$i]['LicencePlate'] }}</a></td>
 		<td>{{ $repairs[$i]->car->Model }}</td>
-		<!--td>{{ $repairs[$i]->car->owner->name }}</td-->
-		<td>{{ $repairs[$i]->car->owner->Name . ' [' . $repairs[$i]->car->owner->Id . ']' }}</td>
+		<td><a href="{{ URL::route('clients.show', array($repairs[$i]->car->OwnerId)) }}">{{ $repairs[$i]->car->owner->Name . ' [' . $repairs[$i]->car->owner->Id . ']' }}</a></td>
 		<td>{{ $repairs[$i]['Type'] }}</td>
 		<td>{{ $repairs[$i]['Comments'] }}</td>
 		@if (Auth::user()->isAdmin)
