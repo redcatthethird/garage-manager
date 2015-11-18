@@ -117,6 +117,7 @@ th, td {
 			<a href="{{ URL::route('registerRoute') }}">Register new user</a>
 		@endif
 		<a href="{{ URL::route('logoutRoute') }}">Logout</a>
+	
 	@endif
 	@if ($message = Session::get('message'))
 	    <h1 class="alert alert-success">

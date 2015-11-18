@@ -20,6 +20,9 @@
     <div>
         <button type="submit">Login</button>
     </div>
+	<div>
+        <a href="{{ URL::route('resetRoute') }}">Forgot password?</a>
+    </div>
 </form>
 
 @include ('foot')
