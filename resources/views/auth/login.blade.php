@@ -14,10 +14,6 @@
     </div>
 
     <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
         <button type="submit">Login</button>
     </div>
 	<div>
