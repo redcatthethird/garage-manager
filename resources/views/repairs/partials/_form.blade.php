@@ -1,7 +1,7 @@
 <div class="form-group">
 	{!! Form::label('LicencePlate', 'License Plate No:') !!}
 	{!! Form::text('LicencePlate') !!}
-	<a href="{{ URL::route('cars.create', array($cars[$i]['Id'])) }}">Add new car</a>
+	<a href="{{ URL::route('cars.create')}}">Add new car</a>
 </div>
 
 <div class="form-group">

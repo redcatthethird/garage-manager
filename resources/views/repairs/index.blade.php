@@ -7,6 +7,7 @@
 	<tr>
 		<th>ID</th>
 		<th>Plate Number</th>
+		<th>Model</th>
 		<th>Staff in charge</th>
 		<th>Ongoing?</th>
 		<th>Type</th>
@@ -20,12 +21,14 @@
 	</tr>
 	@for ($i = 0; $i < $count; $i++)
 	<tr>
-		<td><a href="{{ URL::route('repairs.show', array($repairs[$i]['Id'])) }}">{{$repairs[$i]['Id']}}</a></td>
+		<td>{{$repairs[$i]['Id']}}</td>
 		<td><a href="{{ URL::route('cars.show', array($repairs[$i]['LicencePlate'])) }}">{{ $repairs[$i]['LicencePlate'] }}</a></td>
+		<td>{{ $repairs[$i]->car->Model }}</td>
+		
 		@if (Auth::user()->isAdmin)
-			<td><a href="{{ URL::route('staff.show', array($repairs[$i]['StaffId'])) }}">{{ $repairs[$i]['StaffId'] }}</a></td>
+			<td><a href="{{ URL::route('staff.show', array($repairs[$i]['StaffId'])) }}">{{ $repairs[$i]->staff->Name . ' [' . $repairs[$i]['StaffId'] . ']'  }}</a></td>
 		@else
-			<td>{{ $repairs[$i]['StaffId'] }}</td>
+			<td>{{ $repairs[$i]->staff->Name . '(' . $repairs[$i]['StaffId'] . ')' }}</td>
 		@endif
 		<td>{{ $repairs[$i]['Ongoing'] ? 'Yes' : 'No' }}</td>
 		<td>{{ $repairs[$i]['Type'] }}</td>

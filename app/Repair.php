@@ -12,7 +12,7 @@ class Repair extends Model
 
 	public function staff()
 	{
-		return $this->belongsTo('App\Staff', 'StaffId', 'Id');
+		return $this->belongsTo('App\Staff', 'StaffId', 'Id')->withTrashed();
 	}
 
 	public function car()
