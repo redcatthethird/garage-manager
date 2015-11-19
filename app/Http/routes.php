@@ -15,6 +15,10 @@ Route::get('test', function()
 {
     dd(Config::get('mail'));
 });
+
+Route::get('welcome', function ()    {
+    return view('welcome');
+});
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
