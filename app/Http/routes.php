@@ -11,18 +11,9 @@
 |
 */
 
-Route::get('test', function()
-{
-    dd(Config::get('mail'));
-});
-
-Route::get('welcome', function ()    {
-    return view('welcome');
-});
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logoutRoute']);
 
 // Password reset link request routes...
 Route::get('password/email', ['uses'=> 'Auth\PasswordController@getEmail', 'as'=>'resetRoute']);
@@ -45,6 +36,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::resource('cars', 'CarsController');
 	Route::resource('clients', 'ClientsController');
 	Route::resource('repairs', 'RepairsController');
+
+	Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logoutRoute']);
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function()

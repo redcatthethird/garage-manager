@@ -12,7 +12,7 @@
 		<th>E-mail address</th>
 		<th>Edit</th>
 		<th>Delete</th>
-	</tr> 
+	</tr>
 
 	@for ($i = 0; $i < $count; $i++)
 	<tr>

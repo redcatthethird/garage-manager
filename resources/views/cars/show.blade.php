@@ -43,7 +43,7 @@
 		@if (Auth::user()->isAdmin && $repair->staff->deleted_at === null)
 			<td><a href="{{ URL::route('staff.show', array($repair['StaffId'])) }}">{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']'  }}</a></td>
 		@else
-			<td>{{ $repair->staff->Name . '(' . $repair['StaffId'] . ')' }}</td>
+			<td>{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']' }}</td>
 		@endif
 		<td>{{ $repair['StartDate'] }}</td>
 		<td>{{ $repair['EndDate'] }}</td>
