@@ -3,9 +3,7 @@
 @section('title', 'List of cars')
 
 @section('content-header')
-<h1>
-  List of cars
-</h1>
+<h1>List of cars</h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
   <li class="active">Cars</li>
@@ -17,8 +15,16 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('cars.create') }}" class="btn btn-success">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('cars.create') }}" class="btn btn-success" data-toggle="modal" data-target="#Modal">Create</a></strong></h3>
       </div><!-- /.box-header -->
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel">
+		  <div class="modal-dialog modal-lg" role="document"><div class="modal-content"></div>
+		  </div>
+		</div><!-- modal -->
+
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
           <thead>
@@ -41,7 +47,12 @@
 				<td>{{$cars[$i]['Model']}}</td>
 
 				@if (Auth::user()->isAdmin)
-					<td><a href="{{ URL::route('cars.edit', array($cars[$i]['LicencePlate'])) }}" class="btn btn-primary">Edit</a></td>
+					<td><a href="{{ URL::route('cars.edit', array($cars[$i]['LicencePlate'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$cars[$i]['LicencePlate']}}">Edit</a></td>
+
+				<div class="modal fade" id="Modal{{$cars[$i]['LicencePlate']}}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
+				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+				  </div>
+				</div><!-- modal -->
 
 					<td>{!! Form::open(['route' => ['cars.destroy', $cars[$i]['LicencePlate']], 'method' => 'DELETE']) !!}
 						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

@@ -16,8 +16,14 @@
 		<div class="col-xs-4">
 			{!! Form::open(['route' => ['cars.destroy', $car['LicencePlate']], 'method' => 'DELETE']) !!}
 				<div class="btn-group">
-					<a href="{{ URL::route('cars.edit', array($car['LicencePlate'])) }}" class="btn btn-primary">Edit car</a>
-					{!! Form::submit('Delete car', ['class' => 'btn btn-primary']) !!}
+					<a href="{{ URL::route('cars.edit', array($car['LicencePlate'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#showModal">Edit car</a>
+
+					
+				<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
+				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+				  </div>
+				</div><!-- modal -->
+					{!! Form::submit('Delete car', ['class' => 'btn btn-danger']) !!}
 				</div>
 			{!! Form::close() !!}
 		</div>
@@ -74,7 +80,12 @@
 		      <td>{{ '£' . $repair['Cost'] }}</td>
 		      <td>{{ $repair['Paid'] ? 'Yes' : 'No' }}</td>
 
-		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}" class="btn btn-primary">Edit</a></td>
+		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$repair['Id']}}">Edit</a></td>
+
+				<div class="modal fade" id="Modal{{$repair['Id']}}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
+				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+				  </div>
+				</div><!-- modal -->
 
 		      @if (Auth::user()->isAdmin)
 		        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}

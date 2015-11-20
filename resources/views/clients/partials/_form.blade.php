@@ -1,19 +1,19 @@
 <div class="modal-body">
 	<div class="form-group">
 		{!! Form::label('Name', 'Name:') !!}
-		{!! Form::text('Name', 'Name', ['class' => 'form-control']) !!}
+		{!! Form::text('Name', isset($client) ? null : 'Name', ['class' => 'form-control']) !!}
 	</div>
 	<div class="form-group">
 		{!! Form::label('Address', 'Address:') !!}
-		{!! Form::text('Address', 'Name', ['class' => 'form-control']) !!}
+		{!! Form::text('Address', isset($client) ? null : 'Address', ['class' => 'form-control']) !!}
 	</div>
 	<div class="form-group">
 		{!! Form::label('PhoneNo', 'Phone number:') !!}
-		{!! Form::text('PhoneNo', 'Phone number', ['class' => 'form-control']) !!}
+		{!! Form::text('PhoneNo', isset($client) ? null : 'Phone number', ['class' => 'form-control']) !!}
 	</div>
 	<div class="form-group">
 		{!! Form::label('Email', 'E-mail:') !!}
-		{!! Form::text('Email', 'E-mail', ['class' => 'form-control']) !!}
+		{!! Form::text('Email', isset($client) ? null : "E-mail", ['class' => 'form-control']) !!}
 	</div>
 </div>
 

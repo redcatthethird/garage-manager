@@ -26,7 +26,7 @@
 	<div class="form-group">
 		{!! Form::label('StartDate', 'Start Date') !!}
 		{!! Form::text('StartDate') !!}
-		
+
 	</div>
 	
 	<div class="form-group">

@@ -17,8 +17,14 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('staff.create') }}" class="btn btn-success">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('staff.create') }}" class="btn btn-success" data-toggle="modal" data-target="#Modal">Create</a></strong></h3>
       </div><!-- /.box-header -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel">
+		  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+		  </div>
+		</div><!-- modal -->
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
           <thead>
@@ -41,7 +47,12 @@
 				<td>{{$staff[$i]['PhoneNo']}}</td>
 				<td>{{$staff[$i]['Email']}}</td>
 
-				<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}" class="btn btn-primary">Edit</a></td>
+				<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$staff[$i]['Id']}}">Edit</a></td>
+
+				<div class="modal fade" id="Modal{{$staff[$i]['Id']}}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
+				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+				  </div>
+				</div><!-- modal -->
 
 				<td>{!! Form::open(['route' => ['staff.destroy', $staff[$i]['Id']], 'method' => 'DELETE']) !!}
 					{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

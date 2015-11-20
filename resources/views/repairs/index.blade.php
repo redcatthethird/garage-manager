@@ -16,10 +16,10 @@
     <div class="box">
       <div class="box-header">
 		<!-- Button trigger modal -->
-        <h3 class="box-title"><strong><a href="{{ URL::route('repairs.create') }}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('repairs.create') }}" class="btn btn-success" data-toggle="modal" data-target="#Modal">Create</a></strong></h3>
       </div><!-- /.box-header -->
 		<!-- Modal -->
-		<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel">
 		  <div class="modal-dialog" role="document"><div class="modal-content"></div>
 		  </div>
 		</div><!-- modal -->
@@ -65,7 +65,12 @@
 		      <td>{{ '£' . $repair['Cost'] }}</td>
 		      <td>{{ $repair['Paid'] ? 'Yes' : 'No' }}</td>
 
-		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}" class="btn btn-primary">Edit</a></td>
+		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{$repair['Id']}}">Edit</a></td>
+
+				<div class="modal fade" id="Modal{{$repair['Id']}}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
+				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+				  </div>
+				</div><!-- modal -->
 
 		      @if (Auth::user()->isAdmin)
 		        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
