@@ -38,6 +38,10 @@ Route::group(['middleware' => 'auth'], function()
 	Route::resource('repairs', 'RepairsController');
 
 	Route::get('logout', ['uses' => 'Auth\AuthController@getLogout', 'as' => 'logoutRoute']);
+
+	Route::get('reports/daily', ['uses' => 'ReportsController@dailyRepairs', 'as' => 'reports.daily']);
+	Route::get('reports/unpaid', ['uses' => 'ReportsController@unpaidRepairs', 'as' => 'reports.unpaid']);
+	Route::get('reports/ongoing', ['uses' => 'ReportsController@ongoingRepairs', 'as' => 'reports.ongoing']);
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function()

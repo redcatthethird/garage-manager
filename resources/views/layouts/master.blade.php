@@ -47,11 +47,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          
+
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              
-              
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -80,7 +78,7 @@
                     @endif
                     </div>
                     <div class="pull-right">
-                      <a href="{{ URL::route('logoutRoute') }}" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{{ URL::route('logoutRoute') }}" class="btn btn-warning btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -133,9 +131,9 @@
                 <i class="fa fa-paperclip"></i> <span>Reports</span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Today's repairs</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Unpaid repairs</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Ongoing repairs</a></li>
+                <li><a href="{{ URL::route('reports.daily') }}"><i class="fa fa-circle-o"></i> Today's repairs</a></li>
+                <li><a href="{{ URL::route('reports.unpaid') }}"><i class="fa fa-circle-o"></i> Unpaid repairs</a></li>
+                <li><a href="{{ URL::route('reports.ongoing') }}"><i class="fa fa-circle-o"></i> Ongoing repairs</a></li>
               </ul>
             </li>
           @if (Auth::user()->isAdmin ? : "")

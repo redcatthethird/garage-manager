@@ -78,7 +78,7 @@
 
 		      @if (Auth::user()->isAdmin)
 		        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
-		          {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+		          {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 		          {!! Form::close() !!}</td>
 		      @endif
 		    </tr>

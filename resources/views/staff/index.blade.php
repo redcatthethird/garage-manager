@@ -17,7 +17,7 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('staff.create') }}">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('staff.create') }}" class="btn btn-success">Create</a></strong></h3>
       </div><!-- /.box-header -->
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
@@ -44,7 +44,7 @@
 				<td><a href="{{ URL::route('staff.edit', array($staff[$i]['Id'])) }}" class="btn btn-primary">Edit</a></td>
 
 				<td>{!! Form::open(['route' => ['staff.destroy', $staff[$i]['Id']], 'method' => 'DELETE']) !!}
-					{!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+					{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 				<!--a href="{{ URL::route('staff.destroy', array($staff[$i]['Id'])) }}">Delete</a-->
 				{!! Form::close() !!}</td>
 			</tr>

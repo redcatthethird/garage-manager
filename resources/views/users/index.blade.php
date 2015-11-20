@@ -17,7 +17,7 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('clients.create') }}">Create</a></strong></h3>
+        <h3 class="box-title"><small>Users</small></h3>
       </div><!-- /.box-header -->
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
@@ -35,7 +35,7 @@
 				<td>{{$user['email']}}</td>
 
 				<td>{!! Form::open(['route' => ['users.destroy', $user['id']], 'method' => 'DELETE']) !!}
-					{!! Form::submit('Delete', ['class' => "btn btn-primary"]) !!}
+					{!! Form::submit('Delete', ['class' => "btn btn-danger"]) !!}
 					{!! Form::close() !!}</td>
 			</tr>
 			@endforeach

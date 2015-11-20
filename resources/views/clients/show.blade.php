@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', "Repairs on client ".$client->Name." [".$client->Id."]")
+@section('title', "Repairs done for client ".$client->Name." [".$client->Id."]")
 
 @section('content-header')
-<h1>Repairs on client <em>{{ $client->Name }} [{{$client->Id}}]</em></h1>
+<h1>Repairs done for client <em>{{ $client->Name }} [{{$client->Id}}]</em></h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
   <li><a href="#">Clients</a></li>
@@ -80,7 +80,7 @@
 
 			      @if (Auth::user()->isAdmin)
 			        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
-			          {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+			          {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 			          {!! Form::close() !!}</td>
 			      @endif
 			    </tr>

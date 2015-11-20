@@ -15,8 +15,14 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('repairs.create') }}">Create</a></strong></h3>
+		<!-- Button trigger modal -->
+        <h3 class="box-title"><strong><a href="{{ URL::route('repairs.create') }}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</a></strong></h3>
       </div><!-- /.box-header -->
+		<!-- Modal -->
+		<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+		  </div>
+		</div><!-- modal -->
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
           <thead>
@@ -63,7 +69,7 @@
 
 		      @if (Auth::user()->isAdmin)
 		        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
-		          {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
+		          {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 		          {!! Form::close() !!}</td>
 		      @endif
 		    </tr>

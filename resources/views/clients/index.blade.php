@@ -3,9 +3,7 @@
 @section('title', 'List of clients')
 
 @section('content-header')
-<h1>
-  List of clients
-</h1>
+<h1>List of clients</h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
   <li class="active">Clients</li>
@@ -17,8 +15,14 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('clients.create') }}">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('clients.create') }}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</a></strong></h3>
       </div><!-- /.box-header -->
+      
+		<!-- Modal -->
+		<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		  <div class="modal-dialog" role="document"><div class="modal-content"></div>
+		  </div>
+		</div><!-- modal -->
       <div class="box-body">
         <table id="main-table" class="table table-bordered table-hover">
           <thead>
@@ -43,11 +47,13 @@
 				<td>{{$clients[$i]['PhoneNo']}}</td>
 				<td>{{$clients[$i]['Email']}}</td>
 
-				<td><a href="{{ URL::route('clients.edit', array($clients[$i]['Id'])) }}" class="btn btn-primary">Edit</a></td>
+				@if (Auth::user()->isAdmin)
+					<td><a href="{{ URL::route('clients.edit', array($clients[$i]['Id'])) }}" class="btn btn-primary">Edit</a></td>
 
-				<td>{!! Form::open(['route' => ['clients.destroy', $clients[$i]['Id']], 'method' => 'DELETE']) !!}
-					{!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
-					{!! Form::close() !!}</td>
+					<td>{!! Form::open(['route' => ['clients.destroy', $clients[$i]['Id']], 'method' => 'DELETE']) !!}
+						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+						{!! Form::close() !!}</td>
+				@endif
 			</tr>
 			@endfor
           </tbody>
@@ -58,8 +64,10 @@
 				<th>Address</th>
 				<th>Phone Number</th>
 				<th>E-mail address</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				@if (Auth::user()->isAdmin)
+					<th>Edit</th>
+					<th>Delete</th>
+				@endif
             </tr>
           </tfoot>
         </table>
