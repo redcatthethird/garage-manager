@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('title', "Repairs on car ".$car->LicencePlate)
@@ -75,11 +74,11 @@
 		      <td>{{ '£' . $repair['Cost'] }}</td>
 		      <td>{{ $repair['Paid'] ? 'Yes' : 'No' }}</td>
 
-		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}">Edit</a></td>
+		      <td><a href="{{ URL::route('repairs.edit', array($repair['Id'])) }}" class="btn btn-primary">Edit</a></td>
 
 		      @if (Auth::user()->isAdmin)
 		        <td>{!! Form::open(['route' => ['repairs.destroy', $repair['Id']], 'method' => 'DELETE']) !!}
-		          {!! Form::submit('Delete') !!}
+		          {!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
 		          {!! Form::close() !!}</td>
 		      @endif
 		    </tr>
