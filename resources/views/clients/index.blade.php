@@ -15,7 +15,7 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><strong><a href="{{ URL::route('clients.create') }}" class="btn btn-success" data-toggle="modal" data-target="#Modal">Create</a></strong></h3>
+        <h3 class="box-title"><strong><a href="{{ URL::route('clients.create') }}" class="btn btn-success" data-toggle="modal" data-target="#Modal">Add client</a></strong></h3>
       </div><!-- /.box-header -->
 
 		<!-- Modal -->

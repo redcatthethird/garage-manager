@@ -5,19 +5,13 @@
 	</div>
 	<div class="form-group">
 		{!! Form::label('ClientId', 'Client:') !!}
-		<div class="row">
-			
-					<div class="col-xs-8">{!! Form::text('ClientId', isset($car) ? null : 'Client', ['class' => 'form-control']) !!}</div>
-					<div class="col-xs-4">
-						<a href="{{ URL::route('clients.create')}}" class="btn btn-success" data-toggle="modal" data-target="#innerCarModal">Add new client</a>
-					</div>
-					
-				<!-- Modal -->
-				<div class="modal fade" id="innerCarModal" tabindex="-1" role="dialog" aria-labelledby="modalCreateLabel">
-				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
-				  </div>
-				</div><!-- modal -->
-		</div>
+		{{--!! Form::text('ClientId', isset($car) ? null : 'Client', ['class' => 'form-control']) !!--}}
+
+		<select name='ClientId' value="{{ isset($car) ? null : 'Client' }}" class="form-control">
+			@foreach(App\Client::all() as $client)
+                  <option value="{{ $client->Id }}">{{ $client->Name . " [" . $client->Id . "]" }}</option>
+            @endforeach
+        </select>
 	</div>
 	<div class="form-group">
 		{!! Form::label('Model', 'Model:') !!}
