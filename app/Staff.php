@@ -11,7 +11,7 @@ class Staff extends Model
 
 	protected $dates = ['deleted_at'];
 
-	protected $table = 'Staff';
+	protected $table = 'staff';
 	protected $primaryKey = 'Id';
 
 	//protected $guarded = [];
