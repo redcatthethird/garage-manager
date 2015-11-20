@@ -20,63 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('users.index', ['user' => $user, 'count' => User::count()] );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(User $user,Request $request)
-    {
-        //
+        $users= User::all();
+        return view('users.index', ['users' => $users] );
     }
 
     /**
@@ -86,15 +31,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
-    {	
+    {
 		var_dump($user->id);
 		var_dump(Auth::user()->id);
         if (Auth::user()->id != $user->id)
-		{	
+		{
 			$user->delete();
 			return Redirect::route('users.index')->with('message', 'User deleted');
 		}
-		
+
 		return Redirect::route('users.index')->with('message', 'You cannot delete the user that you are currently logged in as');
     }
 }

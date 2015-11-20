@@ -43,13 +43,12 @@
 				<td>{{$clients[$i]['PhoneNo']}}</td>
 				<td>{{$clients[$i]['Email']}}</td>
 
-				<td><a href="{{ URL::route('clients.edit', array($clients[$i]['Id'])) }}">Edit</a></td>
+				<td><a href="{{ URL::route('clients.edit', array($clients[$i]['Id'])) }}" class="btn btn-primary">Edit</a></td>
 
 				<td>{!! Form::open(['route' => ['clients.destroy', $clients[$i]['Id']], 'method' => 'DELETE']) !!}
-					{!! Form::submit('Delete') !!}
+					{!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
 					{!! Form::close() !!}</td>
 			</tr>
-
 			@endfor
           </tbody>
           <tfoot>

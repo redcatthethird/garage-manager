@@ -41,10 +41,10 @@
 				<td>{{$cars[$i]['Model']}}</td>
 
 				@if (Auth::user()->isAdmin)
-					<td><a href="{{ URL::route('cars.edit', array($cars[$i]['LicencePlate'])) }}">Edit</a></td>
+					<td><a href="{{ URL::route('cars.edit', array($cars[$i]['LicencePlate'])) }}" class="btn btn-primary">Edit</a></td>
 
 					<td>{!! Form::open(['route' => ['cars.destroy', $cars[$i]['LicencePlate']], 'method' => 'DELETE']) !!}
-						{!! Form::submit('Delete') !!}
+						{!! Form::submit('Delete', ['class' => 'btn btn-primary']) !!}
 					{!! Form::close() !!}</td>
 				@endif
 			@endfor
