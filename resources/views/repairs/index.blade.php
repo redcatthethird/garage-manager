@@ -3,12 +3,10 @@
 @section('title', 'List of repairs')
 
 @section('content-header')
-<h1>
-  List of repairs
-</h1>
+<h1>List of repairs</h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li class="active">Repairs</li>
+  <li class="active">Staff</li>
 </ol>
 @endsection
 
