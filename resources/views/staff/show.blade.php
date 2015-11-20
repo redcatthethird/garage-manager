@@ -1,3 +1,32 @@
+@extends('layouts.master')
+
+@section('title', "Repairs supervised by staff member ".$staff->Name." [".$staff->Id."]")
+
+@section('content-header')
+<h1>Repairs on client <em>{{ $client->Name }} [{{$client->Id}}]</em></h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li><a href="#">Clients</a></li>
+  <li class="active">{{ $client->Name }}</li>
+</ol>
+
+@if (Auth::user()->isAdmin)
+	<br/>
+	<div class="row">
+		<div class="col-xs-4">
+			{!! Form::open(['route' => ['clients.destroy', $client['Id']], 'method' => 'DELETE']) !!}
+				<div class="btn-group">
+					<a href="{{ URL::route('clients.edit', array($client['Id'])) }}" class="btn btn-primary">Edit client</a>
+					{!! Form::submit('Delete client', ['class' => 'btn btn-primary']) !!}
+				</div>
+			{!! Form::close() !!}
+		</div>
+	</div>
+@endif
+@endsection
+
+
+
 @include ('head', ['title' => "Repairs supervised by staff member ".$staff->Name." [".$staff->Id."]"])
 <h1>Repairs supervised by staff member {{ $staff->Name }} [{{$staff->Id}}]</h1>
 
