@@ -19,6 +19,9 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+    <style>.daterangepicker{z-index:1151 !important;}</style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -133,7 +136,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ URL::route('reports.daily') }}"><i class="fa fa-circle-o"></i> Today's repairs</a></li>
+                <li><a href="{{ URL::route('reports.daily') }}"><i class="fa fa-circle-o"></i> Repairs ending today</a></li>
                 <li><a href="{{ URL::route('reports.unpaid') }}"><i class="fa fa-circle-o"></i> Unpaid repairs</a></li>
                 <li><a href="{{ URL::route('reports.ongoing') }}"><i class="fa fa-circle-o"></i> Ongoing repairs</a></li>
               </ul>
@@ -364,42 +367,5 @@
         });
       });
     </script>
-
-<script language="javascript">
-        function open_container()
-        {
-            var size=document.getElementById('mysize').value;
-            var content = '<form role="form"><div class="form-group"><label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"></div><div class="form-group"><label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></div><div class="form-group"><label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile"><p class="help-block">Example block-level help text here.</p></div><div class="checkbox"><label><input type="checkbox"> Check me out</label></div><button type="submit" class="btn btn-default">Submit</button></form>';
-            var title = 'My dynamic modal dialog form with bootstrap';
-            var footer = '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button>';
-            setModalBox(title,content,footer,size);
-            $('#myModal').modal('show');
-        }
-        function setModalBox(title,content,footer,$size)
-        {
-            document.getElementById('modal-bodyku').innerHTML=content;
-            document.getElementById('myModalLabel').innerHTML=title;
-            document.getElementById('modal-footerq').innerHTML=footer;
-            if($size == 'large')
-            {
-                $('#myModal').attr('class', 'modal fade bs-example-modal-lg')
-                             .attr('aria-labelledby','myLargeModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog modal-lg');
-            }
-            if($size == 'standart')
-            {
-                $('#myModal').attr('class', 'modal fade')
-                             .attr('aria-labelledby','myModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog');
-            }
-            if($size == 'small')
-            {
-                $('#myModal').attr('class', 'modal fade bs-example-modal-sm')
-                             .attr('aria-labelledby','mySmallModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog modal-sm');
-            }
-        }
-        </script>
-
   </body>
 </html>

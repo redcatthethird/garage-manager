@@ -49,8 +49,8 @@ class RepairsController extends Controller
             'StaffId' => 'required|exists:staff,Id',
             'Ongoing' => 'boolean',
             'Type' => 'required',
-            'StartDate' => 'required|date',
-            'EndDate' => 'required|date|after:StartDate',
+            'StartDate' => 'required|date|date_format:d/m/Y|after:today',
+            'EndDate' => 'required|date|date_format:d/m/Y|after:StartDate',
             'Cost' => 'required|numeric',
             'Paid' => 'boolean',
         ]);
