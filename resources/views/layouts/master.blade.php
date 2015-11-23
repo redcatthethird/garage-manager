@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
-    <style>.daterangepicker{z-index:1151 !important;}</style>
+    <style>
+    .daterangepicker { z-index:1151 !important; }
+    option:first { color: #555; }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
