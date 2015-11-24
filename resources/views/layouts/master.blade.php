@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+    <link rel="stylesheet" href="{{ asset('gritter/css/jquery.gritter.css') }}" />
     <style>
     .daterangepicker { z-index:1151 !important; }
     option:first { color: #555; }
@@ -342,7 +343,8 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!--script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script-->
+    <script src="//code.jquery.com/jquery-2.1.4.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- DataTables -->
@@ -356,10 +358,10 @@
     <script src="{{ asset('dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+  <script src="{{ asset('gritter/js/jquery.gritter.min.js') }}"></script>
     <!-- page script -->
     <script>
       $(function () {
-        //$("#example1").DataTable();
         $('#@yield("table-id")').DataTable({
           "paging": true,
           "lengthChange": true,

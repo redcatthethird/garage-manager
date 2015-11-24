@@ -10,6 +10,10 @@ class Repair extends Model
 
 	protected $guarded = [];
 
+	protected $dates = ["StartDate", "EndDate"];
+
+	protected $dateFormat = 'U';
+
 	public function staff()
 	{
 		return $this->belongsTo('App\Staff', 'StaffId', 'Id')->withTrashed();
@@ -19,7 +23,7 @@ class Repair extends Model
 	{
 		return $this->belongsTo('App\Car', 'LicencePlate', 'LicencePlate');
 	}
-	
+
 
 	/*
 	public function client()

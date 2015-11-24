@@ -12,7 +12,7 @@
 		{!! Form::label('LicencePlate', 'License Plate No:') !!}
 		{{--!! Form::text('LicencePlate', isset($repair) ? null : 'Licence plate', ['class' => 'form-control']) !!--}}
 		<select name='LicencePlate' value="{{ isset($repair) ? null : 'Licence plate' }}" class="form-control">
-            <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a car licence plate -- </option>
+            <option value="00AA000" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a car licence plate -- </option>
 			@foreach(App\Car::all() as $car)
                   <option value="{{ $car->LicencePlate }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $car->Model . " [" . $car->LicencePlate . "]" }}</option>
             @endforeach
@@ -23,7 +23,7 @@
 		{!! Form::label('StaffId', 'Staff in charge:') !!}
 		{{--!! Form::text('StaffId', isset($repair) ? null : 'Staff in charge', ['class' => 'form-control']) !!--}}
 		<select name='StaffId' value="{{ isset($repair) ? null : 'Staff in charge' }}" class="form-control">
-            <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a staff member -- </option>
+            <option value="0" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a staff member -- </option>
 			@foreach(App\Staff::all() as $staff)
                   <option value="{{ $staff->Id }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $staff->Name . " [" . $staff->Id . "]" }}</option>
             @endforeach
@@ -31,7 +31,8 @@
 	</div>
 
 	<div class="form-group">
-			{!! Form::checkbox('Ongoing', null, ['class' => 'form-control']) !!}
+			{!! Form::hidden('Ongoing', 0) !!}
+			{!! Form::checkbox('Ongoing', 1) !!}
 			{!! Form::label('Ongoing', 'Ongoing?') !!}
 	</div>
 	<div class="form-group">
@@ -71,8 +72,9 @@
 	</div>
 
 	<div class="form-group">
-			{!! Form::checkbox('Paid', null, ['class' => 'form-control']) !!}
-			{!! Form::label('Paid', 'Paid?') !!}
+		{!! Form::hidden('Paid', 0) !!}
+		{!! Form::checkbox('Paid', 1) !!}
+		{!! Form::label('Paid', 'Paid?') !!}
 	</div>
 </div>
 
@@ -93,5 +95,36 @@ $("input[name$=Date]").daterangepicker({
     drops: "up",
     showDropdowns: true,
 	singleDatePicker: true
+});
+
+
+var frm = $('.modal-dialog form');
+frm.submit(function (ev) {
+    ev.preventDefault();
+    $.ajax({
+        type: frm.attr('method'),
+        url: frm.attr('action'),
+        data: frm.serialize(),
+        success: function (data) {
+	        $(".form-group").removeClass("has-error");
+
+	        ev.target.submit();
+        },
+	    error: function(data){
+	        // Error...
+	        var errors = data.responseJSON;
+	        if (!errors) return;
+	        $.each(errors, function(index, value) {
+	            $.gritter.add({
+	                title: 'Error: ' + index,
+	                text: value
+	            });
+	        });
+	        $(".form-group").removeClass("has-error");
+	        $.each(errors, function(index, value) {
+	        	$("[name=" + index + "]").closest(".form-group").addClass("has-error");
+	        });
+	    }
+    });
 });
 </script>
