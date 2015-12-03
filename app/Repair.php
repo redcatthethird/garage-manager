@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Repair extends Model
 {
@@ -12,7 +13,7 @@ class Repair extends Model
 
 	protected $dates = ["StartDate", "EndDate"];
 
-	protected $dateFormat = 'U';
+	//protected $dateFormat = 'Y-m-d';
 
 	public function staff()
 	{
@@ -23,7 +24,6 @@ class Repair extends Model
 	{
 		return $this->belongsTo('App\Car', 'LicencePlate', 'LicencePlate');
 	}
-
 
 	/*
 	public function client()

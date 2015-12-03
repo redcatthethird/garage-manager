@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('gritter/css/jquery.gritter.css') }}" />
     <style>
     .daterangepicker { z-index:1151 !important; }
+    .datepicker { z-index:1151 !important; }
     option:first { color: #555; }
     </style>
 
@@ -344,7 +345,7 @@
 
     <!-- jQuery 2.1.4 -->
     <!--script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script-->
-    <script src="//code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- DataTables -->

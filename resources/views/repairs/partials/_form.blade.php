@@ -12,7 +12,7 @@
 		{!! Form::label('LicencePlate', 'License Plate No:') !!}
 		{{--!! Form::text('LicencePlate', isset($repair) ? null : 'Licence plate', ['class' => 'form-control']) !!--}}
 		<select name='LicencePlate' value="{{ isset($repair) ? null : 'Licence plate' }}" class="form-control">
-            <option value="00AA000" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a car licence plate -- </option>
+            <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a car licence plate -- </option>
 			@foreach(App\Car::all() as $car)
                   <option value="{{ $car->LicencePlate }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $car->Model . " [" . $car->LicencePlate . "]" }}</option>
             @endforeach
@@ -23,7 +23,7 @@
 		{!! Form::label('StaffId', 'Staff in charge:') !!}
 		{{--!! Form::text('StaffId', isset($repair) ? null : 'Staff in charge', ['class' => 'form-control']) !!--}}
 		<select name='StaffId' value="{{ isset($repair) ? null : 'Staff in charge' }}" class="form-control">
-            <option value="0" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a staff member -- </option>
+            <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a staff member -- </option>
 			@foreach(App\Staff::all() as $staff)
                   <option value="{{ $staff->Id }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $staff->Name . " [" . $staff->Id . "]" }}</option>
             @endforeach
@@ -87,31 +87,41 @@
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script>
 $("input[name$=Date]").daterangepicker({
-    locale: {
-      format: 'DD/MM/YYYY'
+    "locale": {
+        "format": "YYYY-MM-DD",
+            "separator": " - ",
+            "applyLabel": "Apply",
+            "cancelLabel": "Cancel",
+            "fromLabel": "From",
+            "toLabel": "To",
+            "customRangeLabel": "Custom",
+            "firstDay": 1
     },
-    minDate: moment(),
-    startDate: moment(),
+    "minDate": moment(),
+    "startDate": moment(),
     drops: "up",
     showDropdowns: true,
 	singleDatePicker: true
+},
+function(start, end, label) {
+    alert("A new date range was chosen: " + start.format('Y-m-d') + ' to ' + end.format('YYYY-MM-DD'));
 });
 
 
 var frm = $('.modal-dialog form');
 frm.submit(function (ev) {
+	        // Error...
     ev.preventDefault();
+	$(".form-group").removeClass("has-error");
     $.ajax({
         type: frm.attr('method'),
         url: frm.attr('action'),
         data: frm.serialize(),
         success: function (data) {
-	        $(".form-group").removeClass("has-error");
-
-	        ev.target.submit();
+	        //ev.target.submit();
+	        location.reload(true);
         },
 	    error: function(data){
-	        // Error...
 	        var errors = data.responseJSON;
 	        if (!errors) return;
 	        $.each(errors, function(index, value) {
@@ -120,7 +130,6 @@ frm.submit(function (ev) {
 	                text: value
 	            });
 	        });
-	        $(".form-group").removeClass("has-error");
 	        $.each(errors, function(index, value) {
 	        	$("[name=" + index + "]").closest(".form-group").addClass("has-error");
 	        });
