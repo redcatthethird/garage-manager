@@ -11,22 +11,28 @@ class AddCarTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testAddCarOk()
     {
-        $this->visit('/')
-	     ->type('a@b.c', 'email')
-             ->type ('panarama', 'password')
-             ->press('Sign In')
-             ->seePageIs('/')
-             ->see('Cars')
-             ->click('Cars')
-             ->seePageIs('/cars')
-             ->see('List of cars')
-             ->click('Add car')
-             ->see('Licence plate:')
-             ->type('DB05Rom', 'LicencePlate')
-             ->select('1','ClientId')
-             ->type('BMW','Model')
-             ->press('Add car');   
+        $user =App\User::first();
+        $this->actingAs($user)
+            ->withSession(['foo' => 'bar'])
+            ->visit('/')
+            ->click('Cars')
+            ->see('List of cars')
+            ->click('Add car')
+            ->type('DB05RON', 'LicencePlate')
+            ->select('5','ClientId')
+            ->type('','Model')
+            ->press('Add car')
+            ->seeInDatabase('cars',['LicencePlate'=>'DB05RON']);
+            
+              
     }
+
+    public function testAddCarError()
+    {   
+            
+
+    }
+
 }
