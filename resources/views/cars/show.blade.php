@@ -18,7 +18,7 @@
 				<div class="btn-group">
 					<a href="{{ URL::route('cars.edit', array($car['LicencePlate'])) }}" class="btn btn-primary" data-toggle="modal" data-target="#showModal">Edit car</a>
 
-					
+
 				<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel">
 				  <div class="modal-dialog" role="document"><div class="modal-content"></div>
 				  </div>
@@ -74,8 +74,8 @@
 		      @else
 		        <td>{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']' }}</td>
 		      @endif
-		      <td>{{ $repair['StartDate'] }}</td>
-		      <td>{{ $repair['EndDate'] }}</td>
+		      <td>{{ $repair['StartDate']->format("j M Y") }}</td>
+		      <td>{{ $repair['EndDate']->format("j M Y") }}</td>
 		      <td>{{ $repair['Ongoing'] ? 'Yes' : 'No' }}</td>
 		      <td>{{ '£' . $repair['Cost'] }}</td>
 		      <td>{{ $repair['Paid'] ? 'Yes' : 'No' }}</td>

@@ -7,10 +7,10 @@
 		{!! Form::label('ClientId', 'Client:') !!}
 		{{--!! Form::text('ClientId', isset($car) ? null : 'Client', ['class' => 'form-control']) !!--}}
 
-		<select name='ClientId' value="{{ isset($car) ? null : 'Client' }}" class="form-control">
+		<select name='ClientId' class="form-control">
             <option value="" disabled {!! isset($client) ? "" : "selected" !!}> -- Select a client -- </option>
 			@foreach(App\Client::all() as $client)
-                  <option value="{{ $client->Id }}" {!! (isset($client) ? "selected" : "") !!}>{{ $client->Name . " [" . $client->Id . "]" }}</option>
+                  <option value="{{ $client->Id }}" {!! (isset($car) && $car->owner->Id == $client->Id ? "selected" : "") !!}> {{ $client->Name . " [" . $client->Id . "]" }}</option>
             @endforeach
         </select>
 	</div>
