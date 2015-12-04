@@ -4,14 +4,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AddClientErro extends TestCase
+class AddClientFromCarTest extends TestCase
 {
     /**
      * A basic functional test example.
      *
      * @return void
      */
-    public function testAddClientError()
+    public function testAddClient()
     {
         $this->visit('/')
 	     ->type('a@b.c', 'email')
@@ -24,11 +24,10 @@ class AddClientErro extends TestCase
              ->see('List of cars')
              ->click('Add client')
              ->see('Name:')
-             ->type('025615', 'Name')
+             ->type('Catalin', 'Name')
              ->type('Bradford BD50NQ Laisteridge Lane','Address')
              ->type('07424023206','PhoneNo')
              ->type('cata112233@gmail.com', 'Email')
-             ->press('Add client')
-             ->see('List of cars');   
+             ->press('Add client');   
     }
 }
