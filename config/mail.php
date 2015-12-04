@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'mx1.hostinger.ro'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'negrea.andrew@gmail.com', 'name' => 'Andrei'],
+    'from' => ['address' => 'noreply@garagemanagement.esy.es', 'name' => 'GarageManagement System'],
 
     /*
     |--------------------------------------------------------------------------
