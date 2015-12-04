@@ -11,10 +11,10 @@
 	<div class="form-group">
 		{!! Form::label('LicencePlate', 'License Plate No:') !!}
 		{{--!! Form::text('LicencePlate', isset($repair) ? null : 'Licence plate', ['class' => 'form-control']) !!--}}
-		<select name='LicencePlate' value="{{ isset($repair) ? null : 'Licence plate' }}" class="form-control">
+		<select name='LicencePlate' class="form-control">
             <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a car licence plate -- </option>
 			@foreach(App\Car::all() as $car)
-                  <option value="{{ $car->LicencePlate }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $car->Model . " [" . $car->LicencePlate . "]" }}</option>
+                  <option value="{{ $car->LicencePlate }}" {!! (isset($repair) && $repair->car->LicencePlate == $car->LicencePlate ? "selected" : "") !!}>{{ $car->Model . " [" . $car->LicencePlate . "]" }}</option>
             @endforeach
         </select>
 	</div>
@@ -22,10 +22,10 @@
 	<div class="form-group">
 		{!! Form::label('StaffId', 'Staff in charge:') !!}
 		{{--!! Form::text('StaffId', isset($repair) ? null : 'Staff in charge', ['class' => 'form-control']) !!--}}
-		<select name='StaffId' value="{{ isset($repair) ? null : 'Staff in charge' }}" class="form-control">
+		<select name='StaffId' class="form-control">
             <option value="" disabled {!! isset($repair) ? "" : "selected" !!}> -- Select a staff member -- </option>
 			@foreach(App\Staff::all() as $staff)
-                  <option value="{{ $staff->Id }}" {!! (isset($repair) ? "selected" : "") !!}>{{ $staff->Name . " [" . $staff->Id . "]" }}</option>
+                  <option value="{{ $staff->Id }}" {!! (isset($repair) && $repair->staff->Id == $staff->Id ? "selected" : "") !!}>{{ $staff->Name . " [" . $staff->Id . "]" }}</option>
             @endforeach
         </select>
 	</div>
@@ -51,9 +51,8 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-		{!! Form::text('StartDate', null, ['class' => 'form-control', 'placeholder' => 'When the repair will start (preferably today)']) !!}
+		{!! Form::text('StartDate', isset($repair) ? $repair->StartDate->toDateString() : null, ['class' => 'form-control', 'placeholder' => 'When the repair will start (preferably today)', "data-date-format"=>"yyyy-mm-dd", 'data-date-autoclose' => true, 'data-date-start-date' => 'today']) !!}
         </div>
-
 	</div>
 
 	<div class="form-group">
@@ -62,7 +61,7 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-		{!! Form::text('EndDate', null, ['class' => 'form-control', 'placeholder' => 'When we expect the repair to be done']) !!}
+		{!! Form::text('EndDate', isset($repair) ? $repair->EndDate->toDateString() : null, ['class' => 'form-control', 'placeholder' => 'When we expect the repair to be done', "data-date-format"=>"yyyy-mm-dd", 'data-date-autoclose' => true, 'data-date-start-date' => 'today']) !!}
         </div>
 	</div>
 
@@ -82,31 +81,8 @@
 	{!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => "modal"]) !!}
 	{!! Form::submit($submit_text, ['class' => 'btn btn-success']) !!}
 </div>
-
-<script src="{{ asset('plugins/daterangepicker/moment.min.js') }}"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script>
-$("input[name$=Date]").daterangepicker({
-    "locale": {
-        "format": "YYYY-MM-DD",
-            "separator": " - ",
-            "applyLabel": "Apply",
-            "cancelLabel": "Cancel",
-            "fromLabel": "From",
-            "toLabel": "To",
-            "customRangeLabel": "Custom",
-            "firstDay": 1
-    },
-    "minDate": moment(),
-    "startDate": moment(),
-    drops: "up",
-    showDropdowns: true,
-	singleDatePicker: true
-},
-function(start, end, label) {
-    alert("A new date range was chosen: " + start.format('Y-m-d') + ' to ' + end.format('YYYY-MM-DD'));
-});
-
+<script> $(new function() {
+$("input[name$=Date]").datepicker();
 
 var frm = $('.modal-dialog form');
 frm.submit(function (ev) {
@@ -136,4 +112,4 @@ frm.submit(function (ev) {
 	    }
     });
 });
-</script>
+});</script>

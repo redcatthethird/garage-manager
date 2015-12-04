@@ -19,11 +19,9 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
     <link rel="stylesheet" href="{{ asset('gritter/css/jquery.gritter.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" />
     <style>
-    .daterangepicker { z-index:1151 !important; }
     .datepicker { z-index:1151 !important; }
     option:first { color: #555; }
     </style>
@@ -360,6 +358,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
   <script src="{{ asset('gritter/js/jquery.gritter.min.js') }}"></script>
+  <script src="{{ asset('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- page script -->
     <script>
       $(function () {

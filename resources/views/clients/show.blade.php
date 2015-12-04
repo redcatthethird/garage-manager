@@ -75,8 +75,8 @@
 			      @else
 			        <td>{{ $repair->staff->Name . ' [' . $repair['StaffId'] . ']' }}</td>
 			      @endif
-			      <td>{{ $repair['StartDate'] }}</td>
-			      <td>{{ $repair['EndDate'] }}</td>
+			      <td>{{ $repair['StartDate']->format("j M Y") }}</td>
+			      <td>{{ $repair['EndDate']->format("j M Y") }}</td>
 			      <td>{{ $repair['Ongoing'] ? 'Yes' : 'No' }}</td>
 			      <td>{{ '£' . $repair['Cost'] }}</td>
 			      <td>{{ $repair['Paid'] ? 'Yes' : 'No' }}</td>
