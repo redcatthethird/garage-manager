@@ -21,18 +21,9 @@ class AddCarTest extends TestCase
             ->see('List of cars')
             ->click('Add car')
             ->type('DB05RON', 'LicencePlate')
-            ->select('5','ClientId')
+            ->select(App\Client::first()->Id,'ClientId')
             ->type('','Model')
             ->press('Add car')
             ->seeInDatabase('cars',['LicencePlate'=>'DB05RON']);
-            
-              
     }
-
-    public function testAddCarError()
-    {   
-            
-
-    }
-
 }
