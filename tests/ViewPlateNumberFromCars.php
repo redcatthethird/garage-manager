@@ -4,14 +4,14 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AddClientFromCarError extends TestCase
+class ViewPlateNumberFromCars extends TestCase
 {
     /**
      * A basic functional test example.
      *
      * @return void
      */
-    public function testAddClientError()
+    public function testViewPlateNumber()
     {
         $this->visit('/')
 	     ->type('a@b.c', 'email')
@@ -22,13 +22,12 @@ class AddClientFromCarError extends TestCase
              ->click('Cars')
              ->seePageIs('/cars')
              ->see('List of cars')
-             ->click('Add client')
-             ->see('Name:')
-             ->type('Catalin', 'Name')
+             ->click('A555WOW')
+             ->seePageIs('/cars/A555WOW');
+            /** ->type('Catalin', 'Name')
              ->type('Bradford BD50NQ Laisteridge Lane','Address')
-             ->type('sss','PhoneNo')
+             ->type('07424023206','PhoneNo')
              ->type('cata112233@gmail.com', 'Email')
-             ->press('Add client')
-             ->see('Error:');    
+             ->press('Add client');*/   
     }
 }
