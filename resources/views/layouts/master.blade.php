@@ -19,6 +19,14 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+    <link rel="stylesheet" href="{{ asset('gritter/css/jquery.gritter.css') }}" />
+    <style>
+    .daterangepicker { z-index:1151 !important; }
+    .datepicker { z-index:1151 !important; }
+    option:first { color: #555; }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,6 +34,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @yield('extra-head')
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -132,7 +141,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ URL::route('reports.daily') }}"><i class="fa fa-circle-o"></i> Today's repairs</a></li>
+                <li><a href="{{ URL::route('reports.daily') }}"><i class="fa fa-circle-o"></i> Repairs ending today</a></li>
                 <li><a href="{{ URL::route('reports.unpaid') }}"><i class="fa fa-circle-o"></i> Unpaid repairs</a></li>
                 <li><a href="{{ URL::route('reports.ongoing') }}"><i class="fa fa-circle-o"></i> Ongoing repairs</a></li>
               </ul>
@@ -335,7 +344,8 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!--script src="{{ asset('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script-->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- DataTables -->
@@ -349,10 +359,10 @@
     <script src="{{ asset('dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+  <script src="{{ asset('gritter/js/jquery.gritter.min.js') }}"></script>
     <!-- page script -->
     <script>
       $(function () {
-        //$("#example1").DataTable();
         $('#@yield("table-id")').DataTable({
           "paging": true,
           "lengthChange": true,
@@ -363,42 +373,5 @@
         });
       });
     </script>
-
-<script language="javascript">
-        function open_container()
-        {
-            var size=document.getElementById('mysize').value;
-            var content = '<form role="form"><div class="form-group"><label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"></div><div class="form-group"><label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></div><div class="form-group"><label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile"><p class="help-block">Example block-level help text here.</p></div><div class="checkbox"><label><input type="checkbox"> Check me out</label></div><button type="submit" class="btn btn-default">Submit</button></form>';
-            var title = 'My dynamic modal dialog form with bootstrap';
-            var footer = '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="button" class="btn btn-primary">Save changes</button>';
-            setModalBox(title,content,footer,size);
-            $('#myModal').modal('show');
-        }
-        function setModalBox(title,content,footer,$size)
-        {
-            document.getElementById('modal-bodyku').innerHTML=content;
-            document.getElementById('myModalLabel').innerHTML=title;
-            document.getElementById('modal-footerq').innerHTML=footer;
-            if($size == 'large')
-            {
-                $('#myModal').attr('class', 'modal fade bs-example-modal-lg')
-                             .attr('aria-labelledby','myLargeModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog modal-lg');
-            }
-            if($size == 'standart')
-            {
-                $('#myModal').attr('class', 'modal fade')
-                             .attr('aria-labelledby','myModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog');
-            }
-            if($size == 'small')
-            {
-                $('#myModal').attr('class', 'modal fade bs-example-modal-sm')
-                             .attr('aria-labelledby','mySmallModalLabel');
-                $('.modal-dialog').attr('class','modal-dialog modal-sm');
-            }
-        }
-        </script>
-
   </body>
 </html>

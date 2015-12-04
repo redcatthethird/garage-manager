@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Redirect;
 use Input;
+use Carbon\Carbon;
+use Log;
 
 class RepairsController extends Controller
 {
@@ -49,9 +51,9 @@ class RepairsController extends Controller
             'StaffId' => 'required|exists:staff,Id',
             'Ongoing' => 'boolean',
             'Type' => 'required',
-            'StartDate' => 'required|date',
-            'EndDate' => 'required|date|after:StartDate',
-            'Cost' => 'required|numeric',
+            'StartDate' => 'required|date_format:Y-m-d|after:yesterday',
+            'EndDate' => 'required|date_format:Y-m-d|after:StartDate',
+            'Cost' => 'required|numeric|min:0',
             'Paid' => 'boolean',
         ]);
 
@@ -99,11 +101,11 @@ class RepairsController extends Controller
             'Type' => 'required',
             'StartDate' => 'required|date',
             'EndDate' => 'required|date|after:StartDate',
-            'Cost' => 'required|numeric',
+            'Cost' => 'required|numeric|min:0',
             'Paid' => 'boolean',
         ]);
-        $repair->update( $input );
 
+        $repair->update( $input );
 
         return Redirect::route('repairs.index')->with('message', 'Repair updated');
     }

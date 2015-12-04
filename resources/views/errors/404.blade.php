@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '410 Gone')
+@section('title', '404 Not found')
 
 @section('extra-head')
 <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 @section('content')
 <div class="container">
     <div class="content">
-        <div class="title">The resource requested is no longer available and will not be available again.</div>
+        <div class="title">Sorry, the page you are looking for could not be found.</div>
     </div>
 </div>
 @endsection

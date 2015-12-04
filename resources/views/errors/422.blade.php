@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '410 Gone')
+@section('title', '422 Unprocessable Entity')
 
 @section('extra-head')
 <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 @section('content')
 <div class="container">
     <div class="content">
-        <div class="title">The resource requested is no longer available and will not be available again.</div>
+        <div class="title">The request was well-formed but was unable to be followed due to semantic errors.</div>
     </div>
 </div>
 @endsection
